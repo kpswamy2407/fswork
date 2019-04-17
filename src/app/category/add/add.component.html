@@ -1,0 +1,69 @@
+<mat-card class="category-card">
+
+    <mat-card-header>
+ 
+      <mat-card-title>Category - Add</mat-card-title>
+ 
+    </mat-card-header>
+ 
+    <mat-card-content>
+ 
+      <form class="category-form"  [formGroup]="addForm" (ngSubmit)="add()">
+ 
+        <table class="category-full-width" cellspacing="0">
+ 
+          <tr>
+ 
+            <td>
+ 
+              <mat-form-field class="category-full-width">
+ 
+              <input matInput placeholder="Name" formControlName="name" required>
+ 
+              </mat-form-field>
+ 
+            </td>
+ 
+          </tr>
+          <tr>
+ 
+            <td>
+ 
+              <mat-form-field class="category-full-width">
+ 
+              <input matInput placeholder="Code" formControlName="code" required>
+ 
+              </mat-form-field>
+ 
+            </td>
+ 
+          </tr>
+          <tr>
+ 
+            <td>
+ 
+              <mat-form-field class="category-full-width">
+ 
+             <mat-checkbox class="category-margin" form="checked">Checked</mat-checkbox>
+ 
+              </mat-form-field>
+ 
+            </td>
+ 
+          </tr>
+ 
+          </table>
+        <mat-card-actions>
+ 
+            <button mat-raised-button type="submit" color="primary">Submit</button>
+       
+          </mat-card-actions>
+      </form>
+ 
+      <mat-spinner [style.display]="showSpinner ? 'block' : 'none'"></mat-spinner>
+ 
+    </mat-card-content>
+ 
+    
+ 
+  </mat-card>

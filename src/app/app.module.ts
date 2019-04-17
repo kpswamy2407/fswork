@@ -8,13 +8,17 @@ import { ReactiveFormsModule} from '@angular/forms'
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MaterialModule} from './includes/material/material.module';
 import {HttpClientModule} from '@angular/common/http';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import {CategoryModule} from './category/category.module';
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
+    CategoryModule,
     AppRoutingModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
