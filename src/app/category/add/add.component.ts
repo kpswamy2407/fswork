@@ -16,13 +16,13 @@ export class AddComponent implements OnInit {
 			'is_active':[null,Validators.required]
 		});
 	}
-	
+
 	ngOnInit() {
   	}
 
   	add(){
   		if(this.addForm.valid){
-  			
+
   			this.restApiService.postData('category/create',this.addForm.value).subscribe(result=>{
   				console.log(result);
   			})
@@ -30,7 +30,7 @@ export class AddComponent implements OnInit {
   		else{
 
   		}
-  		
+
   	}
 
 }

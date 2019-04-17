@@ -11,7 +11,7 @@ export class RestApiService {
   constructor(private http: HttpClient) { }
   private httpOptions = {
     headers: new HttpHeaders({
-      'Content-Type':  'Content-Length', 
+      'Content-Type':  'application/json', 
     })
   };
   getBaseURL(){
@@ -90,13 +90,13 @@ export class RestApiService {
   //Error Handling
   private handleError<T> (operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
- 
+
       // TODO: send the error to remote logging infrastructure
       console.error(error); // log to console instead
- 
+
       // TODO: better job of transforming error for user consumption
       this.log(`${operation} failed: ${error.message}`);
-      
+
       // Send error to the requested page.
       return of(error as T);
 
