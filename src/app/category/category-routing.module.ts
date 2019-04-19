@@ -3,8 +3,9 @@ import { Routes, RouterModule } from '@angular/router';
 import {AddComponent} from './add/add.component';
 import {ListComponent} from './list/list.component';
 const routes: Routes = [
-  {path:'category/all',component:ListComponent},
-  {path:'category/add',component:AddComponent}
+  {path:'',component:ListComponent},
+  {path:'all',component:ListComponent},
+  {path:'add',component:AddComponent}
 ];
 
 @NgModule({
