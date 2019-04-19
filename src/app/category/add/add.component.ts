@@ -9,6 +9,11 @@ import {RestApiService} from '../../service/rest-api.service';
 export class AddComponent implements OnInit {
 	addForm:FormGroup;
 	showSpinner:boolean;
+	submitted:boolean;
+	errorMessage:string;
+	successMessage:string;
+	hasError:Boolean;
+	isOpCompleted:Boolean;
 	constructor(private fb:FormBuilder,private restApiService:RestApiService) {
 		this.addForm=this.fb.group({
 			'name':[null,Validators.required],
@@ -21,16 +26,30 @@ export class AddComponent implements OnInit {
   	}
 
   	add(){
+		this.submitted=true;
+		this.showSpinner=true;
+		this.hasError=false;
+		this.isOpCompleted=false;
   		if(this.addForm.valid){
 
   			this.restApiService.postData('category/create',this.addForm.value).subscribe(result=>{
-  				console.log(result);
+			if(result.status==200){
+				this.isOpCompleted=true;
+				this.successMessage=result.message;
+			}else{
+				this.hasError=true
+				this.errorMessage=result.error;
+			}
+			this.showSpinner=false;
+			this.submitted=false;
+				  
   			})
   		}
   		else{
-
+			this.showSpinner=false;
+			this.submitted=false;  
   		}
 
-  	}
-
+	  }
+	
 }
