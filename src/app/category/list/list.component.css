@@ -2,9 +2,18 @@ table {
     width: 100%;
 }
 
+.table-header{
+    width: 100%;
+}
 .mat-form-field {
     font-size: 14px;
-    width: 100%;
+    width: 85%;
+    float: left;
+    margin-left:10px;
+}
+.add-botton{
+    float: right;
+    margin: 13px 13px 0px 0px;
 }
 
 td,

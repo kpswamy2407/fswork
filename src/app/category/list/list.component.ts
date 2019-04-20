@@ -10,7 +10,7 @@ import { Category } from '../category';
 export class ListComponent implements OnInit {
   categories:Category[];
   sortedData:Category[];
-  displayedColumns=['id','name','code','isActive'];
+  displayedColumns=['id','name','code','isActive','action'];
   dataSource = new MatTableDataSource(this.categories);
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;

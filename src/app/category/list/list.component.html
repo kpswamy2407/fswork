@@ -1,9 +1,11 @@
-<mat-form-field>
-    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
-</mat-form-field>
-<a   [routerLink]="['/category/add']">
-    {{ 'Add' }}
-</a>
+<div class="table-header">
+    <mat-form-field class="float-left">
+        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+    </mat-form-field>
+    <a mat-raised-button color="accent" class="add-botton" [routerLink]="['/category/add']">
+        {{ 'Add' }}
+    </a>
+</div>
 <div class="mat-elevation-z8">
     <table mat-table [dataSource]="dataSource" matSort>
 
@@ -29,7 +31,12 @@
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
             <td mat-cell *matCellDef="let row" [style.color]="row.isActive"> {{row.isActive}} </td>
         </ng-container>
-       
+        <ng-container matColumnDef="action">
+                <th mat-header-cell *matHeaderCellDef> Action </th>   
+                <td mat-cell *matCellDef="let element"> 
+                  <a mat-raised-button [routerLink]="['/category/edit']" routerLinkActive="router-link-active" >{{element.name}}</a> 
+                </td>
+              </ng-container>
         
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

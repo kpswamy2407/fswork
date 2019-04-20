@@ -100,4 +100,9 @@
   .pr20 {
     padding-right: 20px;
   }
-  
+  .float-right{
+    float: right;
+  }
+  .float-left{
+    float: left;
+  }
