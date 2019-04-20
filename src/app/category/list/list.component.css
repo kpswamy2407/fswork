@@ -20,3 +20,10 @@ td,
 th {
     width: 25%;
 }
+.action-class{
+    width:100% !important;
+  }
+  .edit-class,.delete-class{
+    width: 40%;
+    padding:1px;
+  }

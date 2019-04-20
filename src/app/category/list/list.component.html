@@ -33,10 +33,12 @@
         </ng-container>
         <ng-container matColumnDef="action">
                 <th mat-header-cell *matHeaderCellDef> Action </th>   
-                <td mat-cell *matCellDef="let element"> 
-                  <a mat-raised-button [routerLink]="['/category/edit']" routerLinkActive="router-link-active" >{{element.name}}</a> 
+                <td mat-cell *matCellDef="let element" class="action-class"> 
+                  <button mat-icon-button color="primary" class="float-left edit-class" matTooltip="Edit"><mat-icon>edit</mat-icon></button>
+                  <button mat-icon-button color="warn" class="float-right delete-class" (click)="onDelete(element.id)" matTooltip="Delete"><mat-icon>delete_outline</mat-icon></button> 
+                  
                 </td>
-              </ng-container>
+        </ng-container>
         
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

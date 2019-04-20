@@ -1,7 +1,8 @@
-import { Component, OnInit,ViewChild } from '@angular/core';
+import { Component, OnInit,ViewChild,Inject } from '@angular/core';
 import {RestApiService} from '../../service/rest-api.service';
-import {MatSort, MatTableDataSource,MatPaginator} from '@angular/material';
+import {MatSort, MatTableDataSource,MatPaginator,MatDialog, MatDialogConfig} from '@angular/material';
 import { Category } from '../category';
+import { DialogService } from '../../service/dialog.service';
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
@@ -14,7 +15,7 @@ export class ListComponent implements OnInit {
   dataSource = new MatTableDataSource(this.categories);
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
-  constructor(private restApiService:RestApiService) {
+  constructor(private restApiService:RestApiService,private dialogService:DialogService,private dialog: MatDialog,) {
     this.getAll();
     
    }
@@ -43,7 +44,17 @@ export class ListComponent implements OnInit {
     if (this.dataSource.paginator) {
         this.dataSource.paginator.firstPage();
     }
-}
+  }
+  onDelete(id){
+    this.dialogService.openConfirmDialog('Are you sure to delete this record ?')
+    .afterClosed().subscribe(res =>{
+      if(res){
+        console.log(id);
+      }
+    });
+  }
+  
 
 }
+
 
