@@ -80,7 +80,7 @@ export class RestApiService {
   }
 
   //Delete data from the server by its id   -- PUT Method
-  deleteData (url : string,id: number): Observable<any[]> {
+  deleteData (url : string,id: number): Observable<any> {
     const geturl = `${this.baseUrl}${url}/${id}`;
     return this.http.get<any[]>(geturl,this.httpOptions).pipe(
       catchError(this.handleError('deleteDataE',[]))

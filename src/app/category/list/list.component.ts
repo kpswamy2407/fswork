@@ -49,8 +49,8 @@ export class ListComponent implements OnInit {
     this.dialogService.openConfirmDialog('Are you sure to delete this record ?')
     .afterClosed().subscribe(res =>{
       if(res){
-        this.restApiService.deleteData('category/delete',id).subscribe(result=>{
-          if(result.status==200){
+        this.restApiService.deleteData('category/delete',id).subscribe(res=>{
+          if(res.status==200){
             this.getAll();
           }
         })

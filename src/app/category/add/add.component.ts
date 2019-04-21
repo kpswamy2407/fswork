@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormGroup,FormBuilder,Validators} from '@angular/forms';
 import {RestApiService} from '../../service/rest-api.service';
+import {Router} from '@angular/router';
 @Component({
   selector: 'app-add',
   templateUrl: './add.component.html',
@@ -14,7 +15,7 @@ export class AddComponent implements OnInit {
 	successMessage:string;
 	hasError:Boolean;
 	isOpCompleted:Boolean;
-	constructor(private fb:FormBuilder,private restApiService:RestApiService) {
+	constructor(private fb:FormBuilder,private restApiService:RestApiService,private router:Router) {
 		this.addForm=this.fb.group({
 			'name':[null,Validators.required],
 			'code':[null,Validators.required],
@@ -36,6 +37,7 @@ export class AddComponent implements OnInit {
 			if(result.status==200){
 				this.isOpCompleted=true;
 				this.successMessage=result.message;
+				this.router.navigate(['category'])
 			}else{
 				this.hasError=true
 				this.errorMessage=result.error;
