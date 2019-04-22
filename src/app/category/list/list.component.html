@@ -34,7 +34,7 @@
         <ng-container matColumnDef="action">
                 <th mat-header-cell *matHeaderCellDef> Action </th>   
                 <td mat-cell *matCellDef="let element" class="action-class"> 
-                  <button mat-icon-button color="primary" class="float-left edit-class" matTooltip="Edit"><mat-icon>edit</mat-icon></button>
+                  <button mat-icon-button color="primary" class="float-left edit-class" matTooltip="Edit" (click)="edit(element.id)"><mat-icon>edit</mat-icon></button>
                   <button mat-icon-button color="warn" class="float-right delete-class" (click)="onDelete(element.id)" matTooltip="Delete"><mat-icon>delete_outline</mat-icon></button> 
                   
                 </td>

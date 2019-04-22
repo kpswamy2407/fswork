@@ -25,7 +25,7 @@ export class RestApiService {
   }
 
   // Get data using ID from server -- GET Method
-  getDataById(url : string, id: number): Observable<any[]> {
+  getDataById(url : string, id: number): Observable<any> {
     const geturl = `${this.baseUrl}/${url}/?id=${id}`;
     return this.http.get<any[]>(geturl,this.httpOptions)
     .pipe(

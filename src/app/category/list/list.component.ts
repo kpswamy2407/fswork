@@ -3,6 +3,7 @@ import {RestApiService} from '../../service/rest-api.service';
 import {MatSort, MatTableDataSource,MatPaginator,MatDialog, MatDialogConfig} from '@angular/material';
 import { Category } from '../category';
 import { DialogService } from '../../service/dialog.service';
+import {Router} from '@angular/router';
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
@@ -15,7 +16,7 @@ export class ListComponent implements OnInit {
   dataSource = new MatTableDataSource(this.categories);
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
-  constructor(private restApiService:RestApiService,private dialogService:DialogService,private dialog: MatDialog,) {
+  constructor(private restApiService:RestApiService,private dialogService:DialogService,private dialog: MatDialog,private router: Router) {
     this.getAll();
     
    }
@@ -56,6 +57,9 @@ export class ListComponent implements OnInit {
         })
       }
     });
+  }
+  edit(id){
+    this.router.navigate(['category/edit',id]);
   }
   
 
