@@ -71,9 +71,9 @@ export class RestApiService {
   }
 
   //Update data to the server by its id {JSON Format} -- PUT Method
-  updateData (url : string,postData : any[],id: number): Observable<any[]> {
-    const geturl = `${this.baseUrl}/${url}/?id=${id}`;
-    return this.http.put<any[]>(geturl, postData, this.httpOptions)
+  updateData (url : string,postData : any[],id: number): Observable<any> {
+    const geturl = `${this.baseUrl}${url}/${id}`;
+    return this.http.post<any[]>(geturl, postData, this.httpOptions)
     .pipe(
       catchError(this.handleError('updateDataE',[]))
     );

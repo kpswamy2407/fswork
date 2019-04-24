@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Category } from '../category';
 import { RestApiService } from 'src/app/service/rest-api.service';
-import {ActivatedRoute  } from "@angular/router";
+import {ActivatedRoute,Router  } from "@angular/router";
 import {FormGroup,FormBuilder,Validators} from '@angular/forms';
 
 @Component({
@@ -17,10 +17,11 @@ export class EditComponent implements OnInit {
   editForm: FormGroup;
   showSpinner: Boolean;
   isOpCompleted: Boolean;
-  constructor(private restApiService: RestApiService,private router: ActivatedRoute,private fb: FormBuilder) { }
+  successMessage: string;
+  constructor(private restApiService: RestApiService,private activatedRoute: ActivatedRoute,private fb: FormBuilder, private router: Router) { }
 
   ngOnInit() {
-    this.selectedId=this.router.snapshot.params['id'];
+    this.selectedId=this.activatedRoute.snapshot.params['id'];
     this.getCatgory(this.selectedId);
     this.editForm=this.fb.group({
 			'name':[null,Validators.required],
@@ -48,7 +49,29 @@ export class EditComponent implements OnInit {
     })
   }
   edit(id){
-    console.log(this.editForm.value);
+    
+		this.showSpinner=true;
+		this.hasError=false;
+		this.isOpCompleted=false;
+  		if(this.editForm.valid){
+
+  			this.restApiService.updateData('category/update',this.editForm.value,id).subscribe(result=>{
+			if(result.status==200){
+				this.isOpCompleted=true;
+				this.successMessage=result.message;
+				this.router.navigate(['category'])
+			}else{
+				this.hasError=true
+				this.errorMessage=result.error;
+			}
+			  this.showSpinner=false;
+			
+				  
+  			})
+  		}
+  		else{
+			  this.showSpinner=false;
+  		}
   }
 
 }
