@@ -1,3 +1,58 @@
-<p>
-  edit works!
-</p>
+<mat-card class="category-card">
+
+  <mat-card-header>
+
+    <mat-card-title>Size - Edit</mat-card-title>
+
+  </mat-card-header>
+
+  <mat-card-content>
+    <div *ngIf="hasError" class="alert alert-danger ">
+      <strong>{{errorMessage}}</strong>
+    </div>
+    <div *ngIf="isOpCompleted" class="alert alert-success">
+      <strong>{{successMessage}}</strong>
+    </div>
+    <mat-spinner [style.display]="showSpinner ? 'block' : 'none'"></mat-spinner>
+    <form class="category-form"  [formGroup]="editForm" (ngSubmit)="edit(selectedId)">
+
+      <table class="category-full-width" cellspacing="0">
+
+        <tr>
+
+          <td>
+
+            <mat-form-field class="category-full-width">
+
+            <input matInput placeholder="Name" formControlName="name" required>
+
+            </mat-form-field>
+
+          </td>
+
+        </tr>
+        <tr>
+
+          <td>
+
+
+<mat-checkbox class="category-margin" formControlName="isActive" >Active</mat-checkbox>
+          </td>
+
+        </tr>
+
+        </table>
+      <mat-card-actions>
+
+          <button mat-raised-button type="submit" color="primary">Update</button>
+
+        </mat-card-actions>
+    </form>
+
+   
+
+  </mat-card-content>
+
+
+
+</mat-card>

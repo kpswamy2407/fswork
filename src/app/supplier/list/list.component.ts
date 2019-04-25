@@ -1,6 +1,6 @@
 import { Component, OnInit,ViewChild } from '@angular/core';
-import { Size } from '../size';
-import { MatTableDataSource, MatPaginator, MatSort,MatDialog } from '@angular/material';
+import { Supplier } from '../supplier';
+import { MatTableDataSource, MatPaginator, MatSort, MatDialog } from '@angular/material';
 import { RestApiService } from 'src/app/service/rest-api.service';
 import { DialogService } from 'src/app/service/dialog.service';
 import { Router } from '@angular/router';
@@ -12,10 +12,10 @@ import { Router } from '@angular/router';
 })
 export class ListComponent implements OnInit {
 
-  sizes:Size[];
-  sortedData:Size[];
-  displayedColumns=['id','name','isActive','action'];
-  dataSource = new MatTableDataSource(this.sizes);
+  suppliers:Supplier[];
+  sortedData:Supplier[];
+  displayedColumns=['id','name','code','isActive','action'];
+  dataSource = new MatTableDataSource(this.suppliers);
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
   constructor(private restApiService:RestApiService,private dialogService:DialogService,private dialog: MatDialog,private router: Router) {
@@ -30,13 +30,13 @@ export class ListComponent implements OnInit {
   
 
   getAll(){
-    this.restApiService.getAll('size/getall').subscribe(result=>{
+    this.restApiService.getAll('supplier/getall').subscribe(result=>{
       if(result.status==200){
-        this.sizes=result.sizes;
-        this.dataSource.data=this.sizes;
+        this.suppliers=result.suppliers;
+        this.dataSource.data=this.suppliers;
       }
       else{
-        this.sizes=[];
+        this.suppliers=[];
       }    
     })
   }
@@ -52,7 +52,7 @@ export class ListComponent implements OnInit {
     this.dialogService.openConfirmDialog('Are you sure to delete this record ?')
     .afterClosed().subscribe(res =>{
       if(res){
-        this.restApiService.deleteData('size/delete',id).subscribe(res=>{
+        this.restApiService.deleteData('supplier/delete',id).subscribe(res=>{
           if(res.status==200){
             this.getAll();
           }
@@ -61,7 +61,7 @@ export class ListComponent implements OnInit {
     });
   }
   edit(id){
-    this.router.navigate(['size/edit',id]);
+    this.router.navigate(['supplier/edit',id]);
   }
   
 

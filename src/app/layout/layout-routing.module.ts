@@ -21,6 +21,14 @@ const routes: Routes = [
               loadChildren: '../category/category.module#CategoryModule'
           },
           {
+            path: 'brand',
+            loadChildren: '../brand/brand.module#BrandModule'
+          },
+          {
+            path: 'supplier',
+            loadChildren: '../supplier/supplier.module#SupplierModule'
+          },
+          {
             path: 'size',
             loadChildren: '../size/size.module#SizeModule'
         }

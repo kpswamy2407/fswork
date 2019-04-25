@@ -1,6 +1,6 @@
 import { Component, OnInit,ViewChild } from '@angular/core';
-import { Size } from '../size';
-import { MatTableDataSource, MatPaginator, MatSort,MatDialog } from '@angular/material';
+import { Brand } from '../brand';
+import { MatTableDataSource, MatPaginator, MatSort, MatDialog } from '@angular/material';
 import { RestApiService } from 'src/app/service/rest-api.service';
 import { DialogService } from 'src/app/service/dialog.service';
 import { Router } from '@angular/router';
@@ -12,10 +12,10 @@ import { Router } from '@angular/router';
 })
 export class ListComponent implements OnInit {
 
-  sizes:Size[];
-  sortedData:Size[];
-  displayedColumns=['id','name','isActive','action'];
-  dataSource = new MatTableDataSource(this.sizes);
+  brands:Brand[];
+  sortedData:Brand[];
+  displayedColumns=['id','name','code','isActive','action'];
+  dataSource = new MatTableDataSource(this.brands);
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
   constructor(private restApiService:RestApiService,private dialogService:DialogService,private dialog: MatDialog,private router: Router) {
@@ -30,13 +30,13 @@ export class ListComponent implements OnInit {
   
 
   getAll(){
-    this.restApiService.getAll('size/getall').subscribe(result=>{
+    this.restApiService.getAll('brand/getall').subscribe(result=>{
       if(result.status==200){
-        this.sizes=result.sizes;
-        this.dataSource.data=this.sizes;
+        this.brands=result.brands;
+        this.dataSource.data=this.brands;
       }
       else{
-        this.sizes=[];
+        this.brands=[];
       }    
     })
   }
@@ -52,7 +52,7 @@ export class ListComponent implements OnInit {
     this.dialogService.openConfirmDialog('Are you sure to delete this record ?')
     .afterClosed().subscribe(res =>{
       if(res){
-        this.restApiService.deleteData('size/delete',id).subscribe(res=>{
+        this.restApiService.deleteData('brand/delete',id).subscribe(res=>{
           if(res.status==200){
             this.getAll();
           }
@@ -61,7 +61,7 @@ export class ListComponent implements OnInit {
     });
   }
   edit(id){
-    this.router.navigate(['size/edit',id]);
+    this.router.navigate(['brand/edit',id]);
   }
   
 

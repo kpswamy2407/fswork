@@ -2,7 +2,7 @@
 
   <mat-card-header>
 
-    <mat-card-title>Size - Add</mat-card-title>
+    <mat-card-title>Brand - Add</mat-card-title>
 
   </mat-card-header>
 
@@ -31,13 +31,25 @@
           </td>
 
         </tr>
-  
+        <tr>
+
+          <td>
+
+            <mat-form-field class="category-full-width">
+
+            <input matInput placeholder="Code" formControlName="code" required>
+
+            </mat-form-field>
+
+          </td>
+
+        </tr>
         <tr>
 
           <td>
 
 
-<mat-checkbox class="category-margin" formControlName="isActive" >Active</mat-checkbox>
+<mat-checkbox class="category-margin" formControlName="is_active" >Active</mat-checkbox>
           </td>
 
         </tr>
@@ -50,7 +62,7 @@
         </mat-card-actions>
     </form>
 
-    
+
 
   </mat-card-content>
 

@@ -2,7 +2,7 @@
 
   <mat-card-header>
 
-    <mat-card-title>Size - Add</mat-card-title>
+    <mat-card-title>Brand - Edit</mat-card-title>
 
   </mat-card-header>
 
@@ -14,7 +14,7 @@
       <strong>{{successMessage}}</strong>
     </div>
     <mat-spinner [style.display]="showSpinner ? 'block' : 'none'"></mat-spinner>
-    <form class="category-form"  [formGroup]="addForm" (ngSubmit)="add()">
+    <form class="category-form"  [formGroup]="editForm" (ngSubmit)="edit(selectedId)">
 
       <table class="category-full-width" cellspacing="0">
 
@@ -31,7 +31,19 @@
           </td>
 
         </tr>
-  
+        <tr>
+
+          <td>
+
+            <mat-form-field class="category-full-width">
+
+            <input matInput placeholder="Code" formControlName="code" required>
+
+            </mat-form-field>
+
+          </td>
+
+        </tr>
         <tr>
 
           <td>
@@ -45,12 +57,12 @@
         </table>
       <mat-card-actions>
 
-          <button mat-raised-button type="submit" color="primary">Submit</button>
+          <button mat-raised-button type="submit" color="primary">Update</button>
 
         </mat-card-actions>
     </form>
 
-    
+   
 
   </mat-card-content>
 

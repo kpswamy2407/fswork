@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Size } from '../size';
+import { Supplier } from '../supplier';
 import { RestApiService } from 'src/app/service/rest-api.service';
 import {ActivatedRoute,Router  } from "@angular/router";
 import {FormGroup,FormBuilder,Validators} from '@angular/forms';
@@ -10,7 +10,7 @@ import {FormGroup,FormBuilder,Validators} from '@angular/forms';
   styleUrls: ['./edit.component.css']
 })
 export class EditComponent implements OnInit {
-  size: Size;
+  supplier: Supplier;
   selectedId: number;
   errorMessage: string;
   hasError: Boolean;
@@ -25,23 +25,25 @@ export class EditComponent implements OnInit {
     this.getCatgory(this.selectedId);
     this.editForm=this.fb.group({
 			'name':[null,Validators.required],
+			'code':[null,Validators.required],
       'isActive':[null]
 
 		});
     
   }
   getCatgory(id){
-    const url=`size/get/${id}`;
+    const url=`supplier/get/${id}`;
     this.restApiService.getAll(url).subscribe(result=>{
       if(result.status==200){
-        this.size=result.size;
+        this.supplier=result.supplier;
         this.editForm.setValue({
-          'name':this.size.name,
-          'isActive':this.size.isActive
+          'name':this.supplier.name,
+          'code':this.supplier.code,
+          'isActive':this.supplier.isActive
         })
       }
       else{
-        this.errorMessage="No size is exists with provided input."
+        this.errorMessage="No supplier is exists with provided input."
         this.hasError=true;
       }
     })
@@ -53,11 +55,11 @@ export class EditComponent implements OnInit {
 		this.isOpCompleted=false;
   		if(this.editForm.valid){
 
-  			this.restApiService.updateData('size/update',this.editForm.value,id).subscribe(result=>{
+  			this.restApiService.updateData('supplier/update',this.editForm.value,id).subscribe(result=>{
 			if(result.status==200){
 				this.isOpCompleted=true;
 				this.successMessage=result.message;
-				this.router.navigate(['size'])
+				this.router.navigate(['supplier'])
 			}else{
 				this.hasError=true
 				this.errorMessage=result.error;
