@@ -15,31 +15,15 @@ const routes: Routes = [
               path: 'dashboard',
               loadChildren: './dashboard/dashboard.module#DashboardModule'
           },
-          {
-              path: 'charts',
-              loadChildren: './charts/charts.module#ChartsModule'
-          },
-          {
-              path: 'components',
-              loadChildren:
-                  './material-components/material-components.module#MaterialComponentsModule'
-          },
-          {
-              path: 'forms',
-              loadChildren: './forms/forms.module#FormsModule'
-          },
-          {
-              path: 'grid',
-              loadChildren: './grid/grid.module#GridModule'
-          },
-          {
-              path: 'tables',
-              loadChildren: './tables/tables.module#TablesModule'
-          }, */
+        */
           {
               path: 'category',
               loadChildren: '../category/category.module#CategoryModule'
-          }
+          },
+          {
+            path: 'size',
+            loadChildren: '../size/size.module#SizeModule'
+        }
       ]
   }
 ];
