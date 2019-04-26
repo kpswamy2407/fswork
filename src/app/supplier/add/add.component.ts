@@ -19,7 +19,9 @@ export class AddComponent implements OnInit {
 		this.addForm=this.fb.group({
 			'name':[null,Validators.required],
 			'code':[null,Validators.required],
-			'is_active':[null,Validators.required]
+      'phone':[null],
+      'address':[null],
+			'isActive':[null,Validators.required]
 		});
 	}
 
@@ -33,25 +35,25 @@ export class AddComponent implements OnInit {
 		this.isOpCompleted=false;
   		if(this.addForm.valid){
 
-  			this.restApiService.postData('brand/create',this.addForm.value).subscribe(result=>{
+  			this.restApiService.postData('supplier/create',this.addForm.value).subscribe(result=>{
 			if(result.status==200){
 				this.isOpCompleted=true;
 				this.successMessage=result.message;
-				this.router.navigate(['brand'])
+				this.router.navigate(['supplier'])
 			}else{
 				this.hasError=true
 				this.errorMessage=result.error;
 			}
 			this.showSpinner=false;
 			this.submitted=false;
-				  
+
   			})
   		}
   		else{
 			this.showSpinner=false;
-			this.submitted=false;  
+			this.submitted=false;
   		}
 
 	  }
-	
+
 }
