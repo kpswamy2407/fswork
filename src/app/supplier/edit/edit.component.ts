@@ -25,7 +25,9 @@ export class EditComponent implements OnInit {
     this.getCatgory(this.selectedId);
     this.editForm=this.fb.group({
 			'name':[null,Validators.required],
-			'code':[null,Validators.required],
+      'code':[null,Validators.required],
+      'phone':[null],
+      'address':[null],
       'isActive':[null]
 
 		});
@@ -39,6 +41,8 @@ export class EditComponent implements OnInit {
         this.editForm.setValue({
           'name':this.supplier.name,
           'code':this.supplier.code,
+          'phone':this.supplier.phone,
+          'address':this.supplier.address,
           'isActive':this.supplier.isActive
         })
       }

@@ -14,7 +14,7 @@ export class ListComponent implements OnInit {
 
   suppliers:Supplier[];
   sortedData:Supplier[];
-  displayedColumns=['id','name','code','isActive','action'];
+  displayedColumns=['id','name','code','address','isActive','action'];
   dataSource = new MatTableDataSource(this.suppliers);
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
