@@ -1,3 +1,69 @@
-<p>
-  list works!
-</p>
+<div class="table-header">
+	<mat-form-field class="float-left">
+		<input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+	</mat-form-field>
+	<a mat-raised-button color="accent" class="add-botton" [routerLink]="['/supplier/add']">
+		{{ 'Add' }}
+	</a>
+</div>
+<div class="mat-elevation-z8">
+	<table mat-table [dataSource]="dataSource" matSort>
+		<ng-container matColumnDef="id">
+			<th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+			<td mat-cell *matCellDef="let row"> {{row.id}} </td>
+		</ng-container>
+		<!-- Progress Column -->
+		<ng-container matColumnDef="code">
+			<th mat-header-cell *matHeaderCellDef mat-sort-header> Code </th>
+			<td mat-cell *matCellDef="let row"> {{row.code}} </td>
+		</ng-container>
+		<ng-container matColumnDef="supplier">
+			<th mat-header-cell *matHeaderCellDef mat-sort-header>Supplier </th>
+			<td mat-cell *matCellDef="let row"> {{row.supplier.name}}-{{row.supplier.code}} </td>
+		</ng-container>
+		
+		<ng-container matColumnDef="category">
+			<th mat-header-cell *matHeaderCellDef mat-sort-header> Category </th>
+			<td mat-cell *matCellDef="let row"> {{row.category.name}}-{{row.category.code}} </td>
+		</ng-container>
+		<ng-container matColumnDef="brand">
+			<th mat-header-cell *matHeaderCellDef mat-sort-header>Brand </th>
+			<td mat-cell *matCellDef="let row"> {{row.brand.name}}-{{row.brand.code}} </td>
+		</ng-container>
+		<ng-container matColumnDef="size">
+			<th mat-header-cell *matHeaderCellDef mat-sort-header>Size </th>
+			<td mat-cell *matCellDef="let row"> {{row.size.name}} </td>
+		</ng-container>
+		
+		<ng-container matColumnDef="buyingPrice">
+			<th mat-header-cell *matHeaderCellDef mat-sort-header> Buying Price </th>
+			<td mat-cell *matCellDef="let row"> {{row.buyingPrice}} </td>
+		</ng-container>
+		<ng-container matColumnDef="sellingPrice">
+			<th mat-header-cell *matHeaderCellDef mat-sort-header> Selling Price </th>
+			<td mat-cell *matCellDef="let row"> {{row.sellingPrice}} </td>
+		</ng-container>
+		<ng-container matColumnDef="noOfItems">
+			<th mat-header-cell *matHeaderCellDef mat-sort-header>No.Of Items </th>
+			<td mat-cell *matCellDef="let row"> {{row.noOfItems}} </td>
+		</ng-container>
+		<ng-container matColumnDef="noOfItemsLeft">
+			<th mat-header-cell *matHeaderCellDef mat-sort-header>No.Of Items Remaining </th>
+			<td mat-cell *matCellDef="let row"> {{row.noOfItemsLeft}} </td>
+		</ng-container>
+		<ng-container matColumnDef="action">
+			<th mat-header-cell *matHeaderCellDef> Action </th>   
+			<td mat-cell *matCellDef="let element" class="action-class"> 
+				<button mat-icon-button color="primary" class="float-left edit-class" matTooltip="Edit" (click)="edit(element.id)"><mat-icon>edit</mat-icon></button>
+				<button mat-icon-button color="warn" class="float-right delete-class" (click)="onDelete(element.id)" matTooltip="Delete"><mat-icon>delete_outline</mat-icon></button> 
+
+			</td>
+		</ng-container>
+
+
+		<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+		<tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+	</table>
+
+	<mat-paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+</div>
