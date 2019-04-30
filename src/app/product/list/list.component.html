@@ -52,7 +52,7 @@
 			<td mat-cell *matCellDef="let element" class="action-class"> 
 				<button mat-icon-button color="primary" class="float-left edit-class" matTooltip="Edit" (click)="edit(element.id)"><mat-icon>edit</mat-icon></button>
 				<button mat-icon-button color="warn" class="float-right delete-class" (click)="onDelete(element.id)" matTooltip="Delete"><mat-icon>delete_outline</mat-icon></button> 
-				<button mat-icon-button color="accent" class="float-right scan-class" (click)="barcode(element.code,element.sellingPrice)" matTooltip="Barcode"><mat-icon>scanner</mat-icon></button> 
+				<button mat-icon-button color="accent" class="float-right scan-class" (click)="barcode(element.code,element.sellingPrice,element.noOfItems,element.noOfItemsLeft)" matTooltip="Barcode"><mat-icon>scanner</mat-icon></button> 
 
 			</td>
 		</ng-container>

@@ -7,8 +7,8 @@ import { BarcodeComponent } from './barcode/barcode.component';
 const routes: Routes = [
   {path:'',component:ListComponent},
   {path:'add',component:AddComponent},
-  {path:'edit',component:EditComponent},
-  {path:'barcode',component:BarcodeComponent},
+  {path:'edit/:id',component:EditComponent},
+  {path:'barcode/:code/:sp/:noofitems/:noofitemsleft',component:BarcodeComponent},
 ];
 
 @NgModule({

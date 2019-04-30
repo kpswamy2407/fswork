@@ -8,13 +8,15 @@ import { ListComponent } from './list/list.component';
 import { BarcodeComponent } from './barcode/barcode.component';
 import {MaterialModule} from '../includes/material/material.module';
 import {ReactiveFormsModule} from '@angular/forms';
+import {NgxBarcodeModule} from 'ngx-barcode';
 @NgModule({
   declarations: [AddComponent, EditComponent, ListComponent,BarcodeComponent],
   imports: [
     CommonModule,
     ProductRoutingModule,
     MaterialModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxBarcodeModule
   ]
 })
 export class ProductModule { }

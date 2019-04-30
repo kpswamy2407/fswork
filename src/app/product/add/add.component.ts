@@ -19,6 +19,9 @@ export class AddComponent implements OnInit {
   brands: Brand[];
   showSpinner: Boolean;
   isOpCompleted: Boolean;
+  hasError: Boolean;
+  errorMessage: String;
+  successMessage: String;
   constructor(private fb: FormBuilder,private restApiService: RestApiService,private router: Router) {
   	this.getSizes();
   	this.getBrands();
