@@ -61,5 +61,7 @@ export class ListComponent implements OnInit {
   edit(id){
     this.router.navigate(['product/edit',id]);
   }
-  barcode
+  barcode(code,sp){
+  	this.router.navigate(['product/barcode',[code,sp]]);
+  }
 }
