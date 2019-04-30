@@ -18,12 +18,12 @@ table {
 
 td,
 th {
-    width: 25%;
+    width:25%;
 }
 .action-class{
     width:100% !important;
   }
-  .edit-class,.delete-class{
-    width: 40%;
+  .edit-class,.delete-class,scan-class{
+    width: 33.333%;
     padding:1px;
   }
