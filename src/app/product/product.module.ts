@@ -8,7 +8,8 @@ import { ListComponent } from './list/list.component';
 import { BarcodeComponent } from './barcode/barcode.component';
 import {MaterialModule} from '../includes/material/material.module';
 import {ReactiveFormsModule} from '@angular/forms';
-import {NgxBarcodeModule} from 'ngx-barcode';
+import {NgxPrintModule} from 'ngx-print';
+
 @NgModule({
   declarations: [AddComponent, EditComponent, ListComponent,BarcodeComponent],
   imports: [
@@ -16,7 +17,7 @@ import {NgxBarcodeModule} from 'ngx-barcode';
     ProductRoutingModule,
     MaterialModule,
     ReactiveFormsModule,
-    NgxBarcodeModule
+    NgxPrintModule
   ]
 })
 export class ProductModule { }

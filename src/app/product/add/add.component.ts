@@ -22,21 +22,22 @@ export class AddComponent implements OnInit {
   hasError: Boolean;
   errorMessage: String;
   successMessage: String;
+  submitted: Boolean;
   constructor(private fb: FormBuilder,private restApiService: RestApiService,private router: Router) {
   	this.getSizes();
   	this.getBrands();
   	this.getCategories();
   	this.getSuppliers();
   	this.addForm=this.fb.group({
-  		'categoryId':[null,Validators.required],
-  		'sizeId':[null,Validators.required],
-  		'brandId':[null,Validators.required],
-  		'supplierId':[null,Validators.required],
-  		'buyingPrice':[null,Validators.required],
-  		'sellingPrice':[null,Validators.required],
-  		'noOfItems':[null,Validators.required],
-     )}
-
+      'categoryId':[null,Validators.required],
+      'sizeId':[null,Validators.required],
+      'supplierId':[null,Validators.required],
+      'brandId':[null,Validators.required],
+      'buyingPrice':[null,Validators.required],
+      'sellingPrice':[null,Validators.required],
+      'noOfItems':[null,Validators.required]
+    });
+  }
     ngOnInit() {
     }
 

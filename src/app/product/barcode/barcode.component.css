@@ -1,0 +1,9 @@
+.barcode-list{
+	list-style: none;
+}
+.barcode-item{
+	padding: 5px;
+	margin:10px;
+	width: 35px;
+	
+}
