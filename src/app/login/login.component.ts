@@ -1,32 +1,19 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder,Validators,FormGroup} from '@angular/forms';
-import {RestApiService} from '../service/rest-api.service';
+import { Router } from '@angular/router';
+
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+    selector: 'app-login',
+    templateUrl: './login.component.html',
+    styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  loginForm:FormGroup;
-  constructor(private fb:FormBuilder,private restApiService:RestApiService) {
-    this.loginForm=this.fb.group({
-      'username':[null,Validators.required],
-      'password':[null,Validators.required]
-    })
-   }
+    constructor(private router: Router) {}
 
-  ngOnInit() {
+    ngOnInit() {}
 
-  }
-  login(){
-    this.restApiService.postData('users/login',this.loginForm.value).subscribe(result=>{
-      console.log(result);
-      if(result.status==200){
-
-      }else{
-        
-      }
-    })
-  }
-
+    onLogin() {
+        localStorage.setItem('isLoggedin', 'true');
+        this.router.navigate(['/dashboard']);
+    }
 }
+
