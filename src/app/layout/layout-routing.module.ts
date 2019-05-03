@@ -7,15 +7,15 @@ const routes: Routes = [
 			path: '',
 			component: LayoutComponent,
 			children: [
-				 /*  {
+				   {
 							path: '',
 							redirectTo: 'dashboard'
 					},
 					{
 							path: 'dashboard',
-							loadChildren: './dashboard/dashboard.module#DashboardModule'
+							loadChildren: '../dashboard/dashboard.module#DashboardModule'
 					},
-				*/
+				
 					{
 							path: 'category',
 							loadChildren: '../category/category.module#CategoryModule'
@@ -32,10 +32,10 @@ const routes: Routes = [
 						path: 'product',
 						loadChildren: '../product/product.module#ProductModule'
 					},
-				/*	{
+					{
 						path: 'sale',
 						loadChildren: '../sale/sale.module#SaleModule'
-					},*/
+					},
 					{
 						path: 'size',
 						loadChildren: '../size/size.module#SizeModule'
