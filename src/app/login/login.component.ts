@@ -1,5 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import {
+	FormGroup,
+	FormBuilder,
+	Validators
+} from '@angular/forms';
+import {RestApiService} from '../service/rest-api.service';
 
 @Component({
     selector: 'app-login',
@@ -7,13 +13,29 @@ import { Router } from '@angular/router';
     styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-    constructor(private router: Router) {}
+    logiForm: FormGroup;
+    errorMessage: String;
+    hasError: Boolean;
+    showSpinner: Boolean;
+    constructor(private router: Router,private restApiService: RestApiService, private fb: FormBuilder) {
+    	this.logiForm=this.fb.group({
+    		'username':[null,Validators.required],
+    		'password':[null,Validators.required]
+    	})
+    }
 
     ngOnInit() {}
 
     onLogin() {
-        localStorage.setItem('isLoggedin', 'true');
-        this.router.navigate(['/dashboard']);
+    	console.log(this.logiForm.value)
+    	if(this.logiForm.valid){
+    		this.showSpinner=true;
+        	this.router.navigate(['/dashboard']);
+    	}
+    	else{
+    		console.log(this.logiForm.value)
+    	}
+        
     }
 }
 
