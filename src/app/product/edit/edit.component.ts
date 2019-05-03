@@ -14,7 +14,7 @@ import {Brand} from '../../brand/brand';
 })
 export class EditComponent implements OnInit {
 
-	supplier: Supplier;
+	product: Product;
 	selectedId: number;
 	errorMessage: string;
 	hasError: Boolean;
@@ -22,12 +22,20 @@ export class EditComponent implements OnInit {
 	showSpinner: Boolean;
 	isOpCompleted: Boolean;
 	successMessage: string;
+	sizes: Size[];
+  	suppliers: Supplier[];
+  	categories: Category[];
+  	brands: Brand[];
 	constructor(private restApiService: RestApiService,private activatedRoute: ActivatedRoute,private fb: FormBuilder, private router: Router) { }
 
 	ngOnInit() {
 		this.selectedId=this.activatedRoute.snapshot.params['id'];
-		this.getCatgory(this.selectedId);
-			this.addForm=this.fb.group({
+		this.getSizes();
+		this.getSuppliers();
+		this.getBrands();
+		this.getCategories();
+		this.getProduct(this.selectedId);
+			this.editForm=this.fb.group({
 		    'categoryId':[null,Validators.required],
 		    'sizeId':[null,Validators.required],
 		    'supplierId':[null,Validators.required],
@@ -84,15 +92,17 @@ export class EditComponent implements OnInit {
 			if(result.status==200){
 				this.product=result.product;
 				this.editForm.setValue({
-					'name':this.supplier.name,
-					'code':this.supplier.code,
-					'phone':this.supplier.phone,
-					'address':this.supplier.address,
-					'isActive':this.supplier.isActive
+					'categoryId':this.product.categoryId,
+		    		'sizeId':this.product.sizeId,
+		    		'supplierId':this.product.supplierId,
+		    		'brandId':this.product.brandId,
+		    		'buyingPrice':this.product.buyingPrice,
+		    		'sellingPrice':this.product.sellingPrice,
+		    		'noOfItems':this.product.noOfItems
 				})
 			}
 			else{
-				this.errorMessage="No supplier is exists with provided input."
+				this.errorMessage="No product is exists with provided input."
 				this.hasError=true;
 			}
 		})
@@ -104,11 +114,11 @@ export class EditComponent implements OnInit {
 		this.isOpCompleted=false;
 		if(this.editForm.valid){
 
-			this.restApiService.updateData('supplier/update',this.editForm.value,id).subscribe(result=>{
+			this.restApiService.updateData('product/update',this.editForm.value,id).subscribe(result=>{
 				if(result.status==200){
 					this.isOpCompleted=true;
 					this.successMessage=result.message;
-					this.router.navigate(['supplier'])
+					this.router.navigate(['product'])
 				}else{
 					this.hasError=true
 					this.errorMessage=result.error;
