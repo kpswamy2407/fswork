@@ -30,7 +30,10 @@ export class LoginComponent implements OnInit {
     	console.log(this.logiForm.value)
     	if(this.logiForm.valid){
     		this.showSpinner=true;
-        	this.router.navigate(['/dashboard']);
+        	this.restApiService.postData('users/login',this.logiForm.value).subscribe(result=>{
+                console.log(result);
+            })
+            this.router.navigate(['/dashboard']);
     	}
     	else{
     		console.log(this.logiForm.value)
