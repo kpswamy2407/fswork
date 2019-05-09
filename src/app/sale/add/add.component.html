@@ -1,3 +1,81 @@
-<p>
-  add works!
-</p>
+<mat-card class="category-card">
+  <mat-card-header>
+    <mat-card-title>Sales</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <div *ngIf="hasError" class="alert alert-danger ">
+      <strong>{{errorMessage}}</strong>
+    </div>
+    <div *ngIf="isOpCompleted" class="alert alert-success">
+      <strong>{{successMessage}}</strong>
+    </div>
+    <mat-spinner [style.display]="showSpinner ? 'block' : 'none'"></mat-spinner>
+    <form class="category-form"  [formGroup]="addForm" (ngSubmit)="add()">
+
+      <table class="category-full-width" cellspacing="0">
+        <tr>
+          <td>
+           <mat-form-field  class="full-width">
+              <mat-label>Name</mat-label>
+              <input matInput placeholder="Name" formControlName="name">
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td>
+           <mat-form-field  class="full-width">
+              <mat-label>Mobile</mat-label>
+              <input matInput placeholder="Mobile" formControlName="mobile" required>
+            </mat-form-field>
+          </td>
+        </tr>
+         <tr>
+          <td>
+           <mat-form-field  class="full-width">
+              <mat-label>Address</mat-label>
+              <input matInput placeholder="Address" formControlName="address">
+            </mat-form-field>
+          </td>
+        </tr>
+        </table>
+        <div formArrayName="products">
+          <div class="sfy-fg" *ngFor="let group of getProductsFormArray().controls; let i=index" [formGroup]="group">
+            <mat-form-field  class="full-width">
+              <mat-label>Product Code</mat-label>
+              <input matInput placeholder="Product Code" formControlName="code" required>
+            </mat-form-field>
+            <input type="hidden" formControlName="productId">
+            <mat-form-field  class="full-width">
+              <mat-label>Selling Price</mat-label>
+              <input matInput placeholder="Selling Price" formControlName="sellingPrice" required>
+            </mat-form-field>
+            <mat-form-field  class="full-width">
+              <mat-label>Quantity</mat-label>
+              <input matInput placeholder="Quantity" formControlName="quantity" required>
+            </mat-form-field>
+            <mat-form-field  class="full-width">
+              <mat-label>Discount</mat-label>
+              <input matInput placeholder="Discount" formControlName="discount">
+            </mat-form-field>
+            <mat-form-field  class="full-width">
+              <mat-label>Amount</mat-label>
+              <input matInput placeholder="Amount" formControlName="amount" required>
+            </mat-form-field>
+            <div *ngIf="i>0" class="clearfix">
+              <div class="float-right">
+                <button mat-raised-button color="warn" (click)="delTableConfig(i)">Delete</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="float-right">
+          <button mat-raised-button color="primary" (click)="addProducts()">Add another product </button>
+        </div>
+
+      <mat-card-actions>
+        <button mat-raised-button type="submit" color="primary">Submit</button>
+      </mat-card-actions>
+    </form>
+  </mat-card-content>
+</mat-card>
+
