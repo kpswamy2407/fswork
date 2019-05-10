@@ -33,7 +33,7 @@ export class AddComponent implements OnInit {
 						'code':[null,Validators.required],
 						'productId':[null,Validators.required],
 						'sellingPrice':[null,Validators.required],
-						'discount':[null,Validators.required],
+						'discount':[null],
 						'amount':[null,Validators.required],
 						'quantity':[null,Validators.required],
 					})
@@ -49,7 +49,7 @@ export class AddComponent implements OnInit {
 				'code':[null,Validators.required],
 				'productId':[null,Validators.required],
 				'sellingPrice':[null,Validators.required],
-				'discount':[null,Validators.required],
+				'discount':[null],
 				'amount':[null,Validators.required],
 				'quantity':[null,Validators.required]
 			})
