@@ -25,7 +25,7 @@
           <td>
            <mat-form-field  class="full-width">
               <mat-label>Mobile</mat-label>
-              <input matInput placeholder="Mobile" formControlName="mobile" required>
+              <input matInput placeholder="Mobile" formControlName="mobile" required (blur)="getCustomer()">
             </mat-form-field>
           </td>
         </tr>

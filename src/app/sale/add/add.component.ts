@@ -23,11 +23,13 @@ export class AddComponent implements OnInit {
 	errorMessage: String;
 	successMessage: String;
 	submitted: Boolean;
+	
 	constructor(private fb: FormBuilder,private restApiService: RestApiService,private router: Router) {
 		this.addForm=this.fb.group({
 			'name':[null],
 			'mobile':[null,Validators.required],
 			'address':[null],
+			'totalAmount':[null,Validators.required],
 			'products':fb.array([
 				fb.group({
 						'code':[null,Validators.required],
@@ -87,5 +89,26 @@ export class AddComponent implements OnInit {
 			this.showSpinner=false;
 			this.submitted=false;
 		}
+	}
+	getCustomer(){
+		var mobile=this.addForm.value.mobile;
+		if(mobile.length>0){
+			const url=`customer/getbymobile/${mobile}`;
+			this.restApiService.getAll(url).subscribe(result=>{
+
+			if(result.status==200){
+				this.addForm.setValue({
+					'name':result.customer.name,
+					'mobile':result.customer.mobile,
+					'address':result.customer.address,
+					'totalAmount':this.addForm.value.totalAmount,
+					'products':this.addForm.value.products,
+				})
+			}
+		})
+		}
+		//var mobile=this.addForm.mobile.value;
+		/*
+		*/
 	}
 }
