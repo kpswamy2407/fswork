@@ -23,21 +23,20 @@ export class AddComponent implements OnInit {
 	errorMessage: String;
 	successMessage: String;
 	submitted: Boolean;
-	
 	constructor(private fb: FormBuilder,private restApiService: RestApiService,private router: Router) {
 		this.addForm=this.fb.group({
 			'name':[null],
 			'mobile':[null,Validators.required],
 			'address':[null],
-			'totalAmount':[null,Validators.required],
+			'totalAmount':[0,Validators.required],
 			'products':fb.array([
 				fb.group({
 						'code':[null,Validators.required],
 						'productId':[null,Validators.required],
 						'sellingPrice':[null,Validators.required],
-						'discount':[null],
+						'discount':[0],
 						'amount':[null,Validators.required],
-						'quantity':[null,Validators.required],
+						'quantity':[1,Validators.required],
 					})
 				]),
 		});
@@ -51,18 +50,46 @@ export class AddComponent implements OnInit {
 				'code':[null,Validators.required],
 				'productId':[null,Validators.required],
 				'sellingPrice':[null,Validators.required],
-				'discount':[null],
+				'discount':[0],
 				'amount':[null,Validators.required],
-				'quantity':[null,Validators.required]
+				'quantity':[1,Validators.required]
 			})
 		);
 	}
 	delProducts(index: number){
 		if(this.getProductsFormArray().length>1){
+			this.addForm.patchValue({
+				'totalAmount':`${parseFloat(this.addForm.value.totalAmount)-parseFloat(this.getProductsFormArray().value[index].amount)}`,
+			})
 			this.getProductsFormArray().removeAt(index);
+
 		}
 	}
-	
+	getProduct(group: FormGroup){
+		var productCode=group.value.code;
+		if(productCode.length>0){
+			const url=`product/getbycode/${productCode}`;
+			this.restApiService.getAll(url).subscribe(result=>{
+			console.log(result);
+			if(result.status==200){
+				group.patchValue({
+					'productId':result.product.id,
+					'sellingPrice':result.product.sellingPrice,
+					'amount':result.product.sellingPrice,
+				 });
+				this.addForm.patchValue({
+					'totalAmount':`${parseFloat(this.addForm.value.totalAmount)+parseFloat(result.product.sellingPrice)}`,
+				})
+			}
+			});
+		}
+		else{
+
+		}
+		
+		
+		
+	}
 	ngOnInit() {
 	}
 	add(){

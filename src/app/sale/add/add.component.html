@@ -42,7 +42,7 @@
           <div class="sfy-fg" *ngFor="let group of getProductsFormArray().controls; let i=index" [formGroup]="group">
             <mat-form-field  class="full-width">
               <mat-label>Product Code</mat-label>
-              <input matInput placeholder="Product Code" formControlName="code" required>
+              <input matInput placeholder="Product Code" formControlName="code" required (blur)="getProduct(group)">
             </mat-form-field>
             <input type="hidden" formControlName="productId">
             <mat-form-field  class="full-width">
