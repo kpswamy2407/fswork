@@ -77,18 +77,24 @@ export class AddComponent implements OnInit {
 					'sellingPrice':result.product.sellingPrice,
 					'amount':result.product.sellingPrice,
 				 });
-				this.addForm.patchValue({
-					'totalAmount':`${parseFloat(this.addForm.value.totalAmount)+parseFloat(result.product.sellingPrice)}`,
-				})
 			}
 			});
 		}
 		else{
-
+			this.errorMessage="Enter product code";
 		}
+			
+	}
+	updateProduct(group: FormGroup){
+		group.patchValue({
+			'amount':`${parseFloat(group.value.quantity)*parseFloat(group.value.sellingPrice)}`
+		 });
 		
-		
-		
+	}
+	updateProductTotalAmount(group: FormGroup){
+		this.addForm.patchValue({
+			'totalAmount':`${parseFloat(this.addForm.value.totalAmount)+parseFloat(group.value.amount)}`,
+		})
 	}
 	ngOnInit() {
 	}

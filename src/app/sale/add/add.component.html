@@ -51,15 +51,15 @@
             </mat-form-field>
             <mat-form-field  class="full-width">
               <mat-label>Quantity</mat-label>
-              <input matInput placeholder="Quantity" formControlName="quantity" required>
+              <input matInput placeholder="Quantity" formControlName="quantity" required (blur)="updateProduct(group)">
             </mat-form-field>
             <mat-form-field  class="full-width">
               <mat-label>Discount</mat-label>
-              <input matInput placeholder="Discount" formControlName="discount">
+              <input matInput placeholder="Discount" formControlName="discount" (blur)="updateProduct(group)">
             </mat-form-field>
             <mat-form-field  class="full-width">
               <mat-label>Amount</mat-label>
-              <input matInput placeholder="Amount" formControlName="amount" required>
+              <input matInput placeholder="Amount" formControlName="amount" required (change)="updateProduct(group)">
             </mat-form-field>
             <div *ngIf="i>0" class="clearfix">
               <div class="float-right">
