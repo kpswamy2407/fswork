@@ -112,11 +112,11 @@ export class AddComponent implements OnInit {
 		this.hasError=false;
 		this.isOpCompleted=false;
 		if(this.addForm.valid){
-			this.restApiService.postData('product/create',this.addForm.value).subscribe(result=>{
+			this.restApiService.postData('sale/create',this.addForm.value).subscribe(result=>{
 				if(result.status==200){
 					this.isOpCompleted=true;
 					this.successMessage=result.message;
-					this.router.navigate(['product'])
+					this.router.navigate(['sale'])
 				}else{
 					this.hasError=true
 					this.errorMessage=result.error;
