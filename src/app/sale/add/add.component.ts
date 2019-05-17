@@ -58,10 +58,8 @@ export class AddComponent implements OnInit {
 	}
 	delProducts(index: number){
 		if(this.getProductsFormArray().length>1){
-			this.addForm.patchValue({
-				'totalAmount':`${parseFloat(this.addForm.value.totalAmount)-parseFloat(this.getProductsFormArray().value[index].amount)}`,
-			})
 			this.getProductsFormArray().removeAt(index);
+			this.updateProductTotalAmount();
 
 		}
 	}
@@ -70,13 +68,13 @@ export class AddComponent implements OnInit {
 		if(productCode.length>0){
 			const url=`product/getbycode/${productCode}`;
 			this.restApiService.getAll(url).subscribe(result=>{
-			console.log(result);
 			if(result.status==200){
 				group.patchValue({
 					'productId':result.product.id,
 					'sellingPrice':result.product.sellingPrice,
 					'amount':result.product.sellingPrice,
 				 });
+				this.updateProductTotalAmount();
 			}
 			});
 		}
@@ -86,14 +84,23 @@ export class AddComponent implements OnInit {
 			
 	}
 	updateProduct(group: FormGroup){
-		group.patchValue({
-			'amount':`${parseFloat(group.value.quantity)*parseFloat(group.value.sellingPrice)}`
-		 });
+		if(parseFloat(group.value.sellingPrice)>0){
+			var discount=`${(parseFloat(group.value.discount)/100)*parseFloat(group.value.sellingPrice)}`
+			
+			group.patchValue({
+				'amount':`${parseFloat(group.value.quantity)*(parseFloat(group.value.sellingPrice)-parseFloat(discount))}`
+			 });
+			this.updateProductTotalAmount();
+		}
 		
 	}
-	updateProductTotalAmount(group: FormGroup){
+	updateProductTotalAmount(){
+		var totalAmount;
+		this.getProductsFormArray().value.forEach(product=>{
+			totalAmount=`${parseFloat(totalAmount)+parseFloat(product.amount)}`;
+		});
 		this.addForm.patchValue({
-			'totalAmount':`${parseFloat(this.addForm.value.totalAmount)+parseFloat(group.value.amount)}`,
+			'totalAmount':`${parseFloat(totalAmount)}`,
 		})
 	}
 	ngOnInit() {
