@@ -95,7 +95,8 @@ export class AddComponent implements OnInit {
 		
 	}
 	updateProductTotalAmount(){
-		var totalAmount;
+		 var totalAmount;
+		 totalAmount=0;
 		this.getProductsFormArray().value.forEach(product=>{
 			totalAmount=`${parseFloat(totalAmount)+parseFloat(product.amount)}`;
 		});
@@ -138,17 +139,15 @@ export class AddComponent implements OnInit {
 
 			if(result.status==200){
 				this.addForm.setValue({
-					'name':result.customer.name,
-					'mobile':result.customer.mobile,
-					'address':result.customer.address,
-					'totalAmount':this.addForm.value.totalAmount,
-					'products':this.addForm.value.products,
-				})
-			}
-		})
+						'name':result.customer.name,
+						'mobile':result.customer.mobile,
+						'address':result.customer.address,
+						'totalAmount':this.addForm.value.totalAmount,
+						'products':this.addForm.value.products,
+					})
+				}
+			})
 		}
-		//var mobile=this.addForm.mobile.value;
-		/*
-		*/
+		
 	}
 }
