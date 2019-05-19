@@ -29,6 +29,7 @@ export class AddComponent implements OnInit {
   	this.getCategories();
   	this.getSuppliers();
   	this.addForm=this.fb.group({
+      'name':[null,Validators.required],
       'categoryId':[null,Validators.required],
       'sizeId':[null,Validators.required],
       'supplierId':[null,Validators.required],

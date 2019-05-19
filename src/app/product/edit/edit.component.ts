@@ -36,6 +36,7 @@ export class EditComponent implements OnInit {
 		this.getCategories();
 		this.getProduct(this.selectedId);
 			this.editForm=this.fb.group({
+			'name':[null,Validators.required],
 		    'categoryId':[null,Validators.required],
 		    'sizeId':[null,Validators.required],
 		    'supplierId':[null,Validators.required],
@@ -92,6 +93,7 @@ export class EditComponent implements OnInit {
 			if(result.status==200){
 				this.product=result.product;
 				this.editForm.setValue({
+					'name':this.product.name,
 					'categoryId':this.product.categoryId,
 		    		'sizeId':this.product.sizeId,
 		    		'supplierId':this.product.supplierId,

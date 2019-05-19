@@ -59,8 +59,8 @@ export class ListComponent implements OnInit {
       }
     });
   }
-  edit(id){
-    this.router.navigate(['product/edit',id]);
+  view(id){
+    this.router.navigate(['sale/view',id]);
   }
 
 }

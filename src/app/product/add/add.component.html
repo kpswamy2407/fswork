@@ -13,6 +13,15 @@
     <form class="category-form"  [formGroup]="addForm" (ngSubmit)="add()">
 
       <table class="category-full-width" cellspacing="0">
+        
+         <tr>
+          <td>
+           <mat-form-field  class="full-width">
+              <mat-label>Name</mat-label>
+              <input matInput placeholder="Name" formControlName="name" required>
+            </mat-form-field>
+          </td>
+        </tr>
         <tr>
           <td>
            <mat-form-field  class="full-width">

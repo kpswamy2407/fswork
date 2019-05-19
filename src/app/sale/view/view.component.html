@@ -1,0 +1,42 @@
+<div class="mat-elevation-z8">
+	 <mat-spinner [style.display]="showSpinner ? 'block' : 'none'"></mat-spinner>
+	<div [style.display]="isLoaded?'block' : 'none'" id="print-section">
+		<div class="customer">
+		<h4>Customer Details</h4>
+			<table>
+				<tr><td>Date of Purchase</td><td>:</td><td>{{sale.createdAt | date:'medium'}}</td></tr>
+				<tr><td>Reference Number</td><td>:</td><td>{{sale.id}}</td></tr>
+				<tr><td>Name</td><td>:</td><td>{{sale.customer.name}}</td></tr>
+				<tr><td>Mobile</td><td>:</td><td>{{sale.customer.mobile}}</td></tr>
+			</table>
+	</div>
+	<div class="sales">
+		<h4>Product Details</h4>
+		<table>
+			<tr>
+				<th>S. No</th>
+				<th>Product Code</th>
+				<th>Product Name</th>
+				<th>Selling Price</th>
+				<th>Discount(%)</th>
+				<th>Quantity</th>
+				<th>Amount</th>
+			</tr>
+			<tr *ngFor="let saleDetail of sale.salesDetails; let i = index" >
+   				<td>{{i+1}}</td>
+   				<td>{{saleDetail.product.code}}</td>
+   				<td>{{saleDetail.product.name}}</td>
+   				<td>{{saleDetail.sellingPrice | currency:"&#8377;"}}</td>
+   				<td>{{saleDetail.discount}}</td>
+   				<td>{{saleDetail.quantity}}</td>
+   				<td>{{saleDetail.amount | currency:"&#8377;"}}</td>
+  			</tr>
+		</table>
+		<h5 class="totalamount">Total amount: {{sale.totalAmount | currency:"&#8377;"}}</h5>
+	</div>
+	</div>
+	<div class="button-section">
+		<button printSectionId="print-section" ngxPrint mat-raised-button  color="primary" class="print">Print</button>
+		<button  mat-raised-button  color="warn" (click)="goBack()" >Back</button>
+	</div>
+</div>

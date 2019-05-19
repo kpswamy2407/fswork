@@ -1,0 +1,42 @@
+.customer h4{
+	padding: 10px;
+    margin: 10px;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 18px;
+}
+.customer table{
+    padding: 5px;
+    width: 100%;
+    line-height: 1.5;
+    margin: 5px;
+    text-align: justify;
+    text-transform: uppercase;
+    text-decoration: solid;
+}
+
+.sales h4{
+	padding: 10px;
+    margin: 10px;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 18px;
+}
+.sales table{
+    padding: 5px;
+    width: 100%;
+    line-height: 1.5;
+    margin: 5px;
+    text-align: justify;
+    text-transform: uppercase;
+    text-decoration: solid;
+}
+.totalamount{
+	padding: 10px;
+    margin: 10px;
+    text-transform: uppercase;
+    font-size: 18px;
+}
+.button-section button{
+	margin: 10px;
+}

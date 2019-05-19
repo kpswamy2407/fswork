@@ -3,6 +3,7 @@ import { Brand } from '../brand';
 import { RestApiService } from 'src/app/service/rest-api.service';
 import {ActivatedRoute,Router  } from "@angular/router";
 import {FormGroup,FormBuilder,Validators} from '@angular/forms';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-edit',
@@ -18,7 +19,7 @@ export class EditComponent implements OnInit {
   showSpinner: Boolean;
   isOpCompleted: Boolean;
   successMessage: string;
-  constructor(private restApiService: RestApiService,private activatedRoute: ActivatedRoute,private fb: FormBuilder, private router: Router) { }
+  constructor(private restApiService: RestApiService,private activatedRoute: ActivatedRoute,private fb: FormBuilder, private router: Router,private location: Location) { }
 
   ngOnInit() {
     this.selectedId=this.activatedRoute.snapshot.params['id'];
@@ -73,5 +74,8 @@ export class EditComponent implements OnInit {
 			  this.showSpinner=false;
   		}
   }
+   goBack(){
+      this.location.back();
+    }
 
 }
