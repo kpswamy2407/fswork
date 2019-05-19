@@ -6,6 +6,7 @@ import {Supplier} from '../../supplier/supplier';
 import {Category} from '../../category/category';
 import {Brand} from '../../brand/brand';
 import {Router} from '@angular/router';
+import {Location} from '@angular/common';
 @Component({
   selector: 'app-add',
   templateUrl: './add.component.html',
@@ -23,7 +24,7 @@ export class AddComponent implements OnInit {
   errorMessage: String;
   successMessage: String;
   submitted: Boolean;
-  constructor(private fb: FormBuilder,private restApiService: RestApiService,private router: Router) {
+  constructor(private fb: FormBuilder,private restApiService: RestApiService,private router: Router,private location: Location) {
   	this.getSizes();
   	this.getBrands();
   	this.getCategories();
@@ -108,5 +109,8 @@ export class AddComponent implements OnInit {
       this.showSpinner=false;
       this.submitted=false;
     }
+  }
+  goBack(){
+    this.location.back();
   }
 }

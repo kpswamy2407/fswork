@@ -7,6 +7,7 @@ import {Size} from '../../size/size';
 import {Supplier} from '../../supplier/supplier';
 import {Category} from '../../category/category';
 import {Brand} from '../../brand/brand';
+import {Location} from '@angular/common';
 @Component({
 	selector: 'app-edit',
 	templateUrl: './edit.component.html',
@@ -26,7 +27,7 @@ export class EditComponent implements OnInit {
   	suppliers: Supplier[];
   	categories: Category[];
   	brands: Brand[];
-	constructor(private restApiService: RestApiService,private activatedRoute: ActivatedRoute,private fb: FormBuilder, private router: Router) { }
+	constructor(private restApiService: RestApiService,private activatedRoute: ActivatedRoute,private fb: FormBuilder, private router: Router,private location: Location) { }
 
 	ngOnInit() {
 		this.selectedId=this.activatedRoute.snapshot.params['id'];
@@ -133,6 +134,9 @@ export class EditComponent implements OnInit {
 		else{
 			this.showSpinner=false;
 		}
+	}
+	goBack(){
+		this.location.back();
 	}
 
 }
