@@ -1,0 +1,337 @@
+-- MySQL dump 10.13  Distrib 5.7.24, for Linux (x86_64)
+--
+-- Host: localhost    Database: meanit
+-- ------------------------------------------------------
+-- Server version	5.7.24-0ubuntu0.18.04.1
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `SequelizeMeta`
+--
+
+DROP TABLE IF EXISTS `SequelizeMeta`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `SequelizeMeta` (
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`name`),
+  UNIQUE KEY `name` (`name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `SequelizeMeta`
+--
+
+LOCK TABLES `SequelizeMeta` WRITE;
+/*!40000 ALTER TABLE `SequelizeMeta` DISABLE KEYS */;
+INSERT INTO `SequelizeMeta` VALUES ('20190312124149-users.js'),('20190312162827-suppliers.js'),('20190312162913-sizes.js'),('20190312162930-categories.js'),('20190312163225-brands.js'),('20190318072935-customers.js'),('20190318072944-products.js'),('20190318072949-sales.js'),('20190319065837-add_code_column_to_brand.js'),('20190319071151-add_code_column_to_category.js'),('20190319071204-add_code_column_to_supplier.js');
+/*!40000 ALTER TABLE `SequelizeMeta` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `brands`
+--
+
+DROP TABLE IF EXISTS `brands`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `brands` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) DEFAULT NULL,
+  `isActive` tinyint(1) NOT NULL DEFAULT '1',
+  `createdAt` datetime DEFAULT NULL,
+  `updatedAt` datetime DEFAULT NULL,
+  `code` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `name` (`name`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `brands`
+--
+
+LOCK TABLES `brands` WRITE;
+/*!40000 ALTER TABLE `brands` DISABLE KEYS */;
+INSERT INTO `brands` VALUES (1,'Peter England',1,NULL,'2019-05-19 15:18:26','PE');
+/*!40000 ALTER TABLE `brands` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `categories`
+--
+
+DROP TABLE IF EXISTS `categories`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `categories` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) DEFAULT NULL,
+  `isActive` tinyint(1) NOT NULL DEFAULT '1',
+  `createdAt` datetime DEFAULT NULL,
+  `updatedAt` datetime DEFAULT NULL,
+  `code` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `name` (`name`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `categories`
+--
+
+LOCK TABLES `categories` WRITE;
+/*!40000 ALTER TABLE `categories` DISABLE KEYS */;
+INSERT INTO `categories` VALUES (1,'Formal Shirts',1,'2019-03-19 11:18:50','2019-03-19 11:18:50','FS'),(6,'Casual Pants',1,'2019-04-21 15:44:50','2019-04-21 15:44:50','CP'),(7,'Jeans',1,'2019-04-21 16:01:52','2019-04-21 16:01:52','JN'),(9,'Casual Shirts',1,'2019-04-24 00:44:45','2019-04-24 00:44:45','CS'),(10,'test',0,'2019-04-24 17:13:50','2019-04-24 17:40:40','test');
+/*!40000 ALTER TABLE `categories` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `customers`
+--
+
+DROP TABLE IF EXISTS `customers`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `customers` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) DEFAULT NULL,
+  `mobile` varchar(255) DEFAULT NULL,
+  `address` text,
+  `createdAt` datetime DEFAULT NULL,
+  `updatedAt` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `mobile` (`mobile`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `customers`
+--
+
+LOCK TABLES `customers` WRITE;
+/*!40000 ALTER TABLE `customers` DISABLE KEYS */;
+INSERT INTO `customers` VALUES (1,'swamy','8807809967','kodmur','2019-03-20 12:20:58','2019-03-20 12:20:58'),(2,'swamy','8807809968','kodmur','2019-03-21 06:38:45','2019-03-21 06:38:45'),(3,'Rama','7894561230','Kurnool','2019-05-19 15:05:07','2019-05-19 15:05:07');
+/*!40000 ALTER TABLE `customers` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `products`
+--
+
+DROP TABLE IF EXISTS `products`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `products` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `code` varchar(255) DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `supplierId` int(11) DEFAULT NULL,
+  `categoryId` int(11) DEFAULT NULL,
+  `brandId` int(11) DEFAULT NULL,
+  `sizeId` int(11) DEFAULT NULL,
+  `buyingPrice` decimal(10,0) DEFAULT NULL,
+  `sellingPrice` decimal(10,0) DEFAULT NULL,
+  `noOfItems` int(11) DEFAULT NULL,
+  `noOfItemsSold` decimal(10,0) DEFAULT '0',
+  `createdAt` datetime DEFAULT NULL,
+  `updatedAt` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `code` (`code`),
+  KEY `supplierId` (`supplierId`),
+  KEY `categoryId` (`categoryId`),
+  KEY `brandId` (`brandId`),
+  KEY `sizeId` (`sizeId`),
+  CONSTRAINT `products_ibfk_1` FOREIGN KEY (`supplierId`) REFERENCES `suppliers` (`id`) ON DELETE CASCADE ON UPDATE SET NULL,
+  CONSTRAINT `products_ibfk_2` FOREIGN KEY (`categoryId`) REFERENCES `categories` (`id`) ON DELETE CASCADE ON UPDATE SET NULL,
+  CONSTRAINT `products_ibfk_3` FOREIGN KEY (`brandId`) REFERENCES `brands` (`id`) ON DELETE CASCADE ON UPDATE SET NULL,
+  CONSTRAINT `products_ibfk_4` FOREIGN KEY (`sizeId`) REFERENCES `sizes` (`id`) ON DELETE CASCADE ON UPDATE SET NULL
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `products`
+--
+
+LOCK TABLES `products` WRITE;
+/*!40000 ALTER TABLE `products` DISABLE KEYS */;
+INSERT INTO `products` VALUES (4,'JN_PE_M_MSECHN','Jeans model 2019',1,7,1,2,500,800,11,14,'2019-05-03 02:10:56','2019-05-19 15:05:08'),(5,'CP_PE_M_MSECHN','Casual Pant model 2019',1,6,1,2,500,800,14,11,'2019-05-17 16:41:57','2019-05-19 11:40:48');
+/*!40000 ALTER TABLE `products` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `sales`
+--
+
+DROP TABLE IF EXISTS `sales`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `sales` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `customerId` int(11) DEFAULT NULL,
+  `totalAmount` decimal(10,0) DEFAULT NULL,
+  `createdAt` datetime DEFAULT NULL,
+  `updatedAt` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `customerId` (`customerId`),
+  CONSTRAINT `sales_ibfk_1` FOREIGN KEY (`customerId`) REFERENCES `customers` (`id`) ON DELETE CASCADE ON UPDATE SET NULL
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `sales`
+--
+
+LOCK TABLES `sales` WRITE;
+/*!40000 ALTER TABLE `sales` DISABLE KEYS */;
+INSERT INTO `sales` VALUES (1,1,2960,'2019-05-18 14:07:36','2019-05-18 14:07:36'),(2,1,2960,'2019-05-18 15:09:56','2019-05-18 15:09:56'),(3,1,2240,'2019-05-18 17:07:10','2019-05-18 17:07:10'),(4,3,1440,'2019-05-19 15:05:07','2019-05-19 15:05:07');
+/*!40000 ALTER TABLE `sales` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `salesDetails`
+--
+
+DROP TABLE IF EXISTS `salesDetails`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `salesDetails` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `saleId` int(11) DEFAULT NULL,
+  `productId` int(11) DEFAULT NULL,
+  `sellingPrice` decimal(10,0) DEFAULT NULL,
+  `quantity` int(11) DEFAULT NULL,
+  `amount` decimal(10,0) DEFAULT NULL,
+  `discount` decimal(10,0) DEFAULT NULL,
+  `createdAt` datetime DEFAULT NULL,
+  `updatedAt` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `productId` (`productId`),
+  KEY `saleId` (`saleId`),
+  CONSTRAINT `salesDetails_ibfk_1` FOREIGN KEY (`productId`) REFERENCES `products` (`id`) ON DELETE CASCADE ON UPDATE SET NULL,
+  CONSTRAINT `salesDetails_ibfk_2` FOREIGN KEY (`saleId`) REFERENCES `sales` (`id`) ON DELETE CASCADE ON UPDATE SET NULL
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `salesDetails`
+--
+
+LOCK TABLES `salesDetails` WRITE;
+/*!40000 ALTER TABLE `salesDetails` DISABLE KEYS */;
+INSERT INTO `salesDetails` VALUES (1,1,4,800,2,1520,5,'2019-05-18 14:07:37','2019-05-18 14:07:37'),(2,1,5,800,2,1440,10,'2019-05-18 14:07:37','2019-05-18 14:07:37'),(3,2,4,800,2,1520,5,'2019-05-18 15:09:56','2019-05-18 15:09:56'),(4,2,5,800,2,1440,10,'2019-05-18 15:09:56','2019-05-18 15:09:56'),(5,2,5,800,2,1440,10,'2019-05-18 15:09:56','2019-05-18 15:09:56'),(6,2,4,800,2,1520,5,'2019-05-18 15:09:56','2019-05-18 15:09:56'),(7,2,4,800,2,1520,5,'2019-05-18 15:09:56','2019-05-18 15:09:56'),(8,2,4,800,2,1520,5,'2019-05-18 15:09:56','2019-05-18 15:09:56'),(9,2,5,800,2,1440,10,'2019-05-18 15:09:56','2019-05-18 15:09:56'),(10,2,5,800,2,1440,10,'2019-05-18 15:09:56','2019-05-18 15:09:56'),(11,3,4,800,2,1520,5,'2019-05-18 17:07:10','2019-05-18 17:07:10'),(12,3,5,800,1,720,10,'2019-05-18 17:07:10','2019-05-18 17:07:10'),(13,4,4,800,2,1440,10,'2019-05-19 15:05:07','2019-05-19 15:05:07');
+/*!40000 ALTER TABLE `salesDetails` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `sizes`
+--
+
+DROP TABLE IF EXISTS `sizes`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `sizes` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) DEFAULT NULL,
+  `isActive` tinyint(1) NOT NULL DEFAULT '1',
+  `createdAt` datetime DEFAULT NULL,
+  `updatedAt` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `name` (`name`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `sizes`
+--
+
+LOCK TABLES `sizes` WRITE;
+/*!40000 ALTER TABLE `sizes` DISABLE KEYS */;
+INSERT INTO `sizes` VALUES (1,'S',1,'2019-03-14 11:26:12','2019-03-14 11:32:19'),(2,'M',1,'2019-03-14 11:26:19','2019-03-14 11:26:19'),(3,'XL',1,'2019-03-14 11:26:31','2019-03-14 11:26:31'),(4,'XXL',1,'2019-03-14 11:26:37','2019-03-14 11:26:37');
+/*!40000 ALTER TABLE `sizes` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `suppliers`
+--
+
+DROP TABLE IF EXISTS `suppliers`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `suppliers` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) DEFAULT NULL,
+  `phone` varchar(255) DEFAULT NULL,
+  `address` text,
+  `isActive` tinyint(1) NOT NULL DEFAULT '1',
+  `createdAt` datetime DEFAULT NULL,
+  `updatedAt` datetime DEFAULT NULL,
+  `code` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `name` (`name`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `suppliers`
+--
+
+LOCK TABLES `suppliers` WRITE;
+/*!40000 ALTER TABLE `suppliers` DISABLE KEYS */;
+INSERT INTO `suppliers` VALUES (1,'MSS Exports','8807809967','Chennai',1,'2019-03-19 11:23:16','2019-03-19 11:23:16','MSECHN');
+/*!40000 ALTER TABLE `suppliers` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `users`
+--
+
+DROP TABLE IF EXISTS `users`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(255) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `password` varchar(255) DEFAULT NULL,
+  `userType` int(11) DEFAULT NULL,
+  `isActive` tinyint(1) NOT NULL DEFAULT '1',
+  `createdAt` datetime DEFAULT NULL,
+  `updatedAt` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `username` (`username`),
+  UNIQUE KEY `email` (`email`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `users`
+--
+
+LOCK TABLES `users` WRITE;
+/*!40000 ALTER TABLE `users` DISABLE KEYS */;
+INSERT INTO `users` VALUES (1,'admin','sureshgopi@gmail.com','0192023a7bbd73250516f069df18b500',1,1,'2019-03-14 06:51:49','2019-03-14 06:51:49');
+/*!40000 ALTER TABLE `users` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2019-05-19 22:25:43
