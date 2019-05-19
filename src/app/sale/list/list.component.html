@@ -1,3 +1,43 @@
-<p>
-  list works!
-</p>
+<div class="table-header">
+	<mat-form-field class="float-left">
+		<input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+	</mat-form-field>
+	<a mat-raised-button color="accent" class="add-botton" [routerLink]="['/sale/add']">
+		{{ 'Add' }}
+	</a>
+</div>
+<div class="mat-elevation-z8">
+	<table mat-table [dataSource]="dataSource" matSort>
+		<!-- Progress Column -->
+		<ng-container matColumnDef="id">
+			<th mat-header-cell *matHeaderCellDef mat-sort-header> Sale Reference Number </th>
+			<td mat-cell *matCellDef="let row"> {{row.id}} </td>
+		</ng-container>
+		<ng-container matColumnDef="customer">
+			<th mat-header-cell *matHeaderCellDef mat-sort-header>Customer </th>
+			<td mat-cell *matCellDef="let row"> {{row.customer.name}}-{{row.customer.mobile}} </td>
+		</ng-container>
+		<ng-container matColumnDef="totalAmount">
+			<th mat-header-cell *matHeaderCellDef mat-sort-header>Amount</th>
+			<td mat-cell *matCellDef="let row"> {{row.totalAmount}} </td>
+		</ng-container>
+		<ng-container matColumnDef="createdAt">
+			<th mat-header-cell *matHeaderCellDef mat-sort-header>Date Of Sale</th>
+			<td mat-cell *matCellDef="let row"> {{row.createdAt | date:'medium' }} </td>
+		</ng-container>
+		<ng-container matColumnDef="action">
+			<th mat-header-cell *matHeaderCellDef> Action </th>   
+			<td mat-cell *matCellDef="let element" class="action-class"> 
+				<button mat-icon-button color="primary" class="float-left edit-class" matTooltip="Print" (click)="edit(element.id)"><mat-icon>print</mat-icon></button>
+				<button mat-icon-button color="warn" class="float-right delete-class" (click)="onDelete(element.id)" matTooltip="View the sales details"><mat-icon>info</mat-icon></button> 
+
+			</td>
+		</ng-container>
+
+
+		<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+		<tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+	</table>
+
+	<mat-paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+</div>
