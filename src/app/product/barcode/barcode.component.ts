@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute,Router  } from "@angular/router";
+import {RestApiService} from '../../service/rest-api.service';
 @Component({
   selector: 'app-barcode',
   templateUrl: './barcode.component.html',
@@ -12,7 +13,7 @@ export class BarcodeComponent implements OnInit {
   noofItems: Number;
   noofItemsLeft: Number;
   /*:code/:sp/:noofitems/:noofitemsleft*/
-  constructor(private activatedRoute:ActivatedRoute,private router:Router){
+  constructor(private activatedRoute:ActivatedRoute,private router:Router,private restApiService: RestApiService){
 
   }
 
@@ -28,5 +29,14 @@ export class BarcodeComponent implements OnInit {
      items.push(i);
    }
    return items;
- }
+  }
+  getRandomNumber(){
+    var result           = '';
+    var characters       = 'zxcvbnmlkj01234567899876543';
+    var charactersLength = characters.length;
+    for ( var i = 0; i < 3; i++ ) {
+      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+    return result;
+  }
 }
