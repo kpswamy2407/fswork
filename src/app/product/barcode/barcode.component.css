@@ -1,3 +1,21 @@
+
+* {
+  box-sizing: border-box;
+}
+
+/* Create two equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 50%;
+  padding: 10px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+ }
 .barcode-list{
 	list-style: none;
 }
@@ -6,4 +24,30 @@
 	margin:10px;
 	width: 35px;
 	
+}
+
+@media print {
+         
+         
+.column {
+  float: left;
+  width: 50%;
+  padding: 10px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+ }
+.barcode-list{
+	list-style: none;
+}
+.barcode-item{
+	padding: 5px;
+	margin:10px;
+	width: 35px;
+	
+}
 }
