@@ -22,32 +22,33 @@
 .barcode-item{
 	padding: 5px;
 	margin:10px;
-	width: 35px;
-	
+	border: 1px solid grey;
 }
-
+.button-section button{
+  margin: 10px;
+}
 @media print {
          
          
-.column {
-  float: left;
-  width: 50%;
-  padding: 10px;
+#print-section .column {
+  float: left !important;
+  width: 50%  !important; 
+  padding: 10px !important;
 }
 
 /* Clear floats after the columns */
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
+#print-section .row:after {
+  content: ""  !important;
+  display: table  !important;
+  clear: both  !important;
  }
-.barcode-list{
-	list-style: none;
+#print-section .barcode-list{
+	list-style: none  !important;
 }
-.barcode-item{
-	padding: 5px;
-	margin:10px;
-	width: 35px;
+#print-section .barcode-item{
+	padding: 5px  !important;
+	margin:10px  !important;
+	width: 35px !important;
 	
-}
+  }
 }
