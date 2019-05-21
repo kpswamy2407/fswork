@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material';
-
+import {RestApiService} from '../service/rest-api.service';
 export interface PeriodicElement {
     name: string;
     position: number;
@@ -27,14 +27,15 @@ export class DashboardComponent implements OnInit {
     displayedColumns = ['position', 'name', 'weight', 'symbol'];
     dataSource = new MatTableDataSource(ELEMENT_DATA);
     places: Array<any> = [];
-
+    records: any;
     applyFilter(filterValue: string) {
         filterValue = filterValue.trim(); // Remove whitespace
         filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
         this.dataSource.filter = filterValue;
     }
 
-    constructor() {
+    constructor(private restApiService: RestApiService) {
+        this.getDashboard();
         this.places = [
             {
                 imgSrc: 'assets/images/card-1.jpg',
@@ -67,4 +68,12 @@ export class DashboardComponent implements OnInit {
     }
 
     ngOnInit() {}
+    getDashboard(){
+        this.restApiService.getAll('users/dashboard').subscribe(result=>{
+            console.log(result);
+            if(result.status=200){
+                this.records=result.records;
+            }
+        })
+    }
 }
