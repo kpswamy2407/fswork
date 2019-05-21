@@ -1,33 +1,16 @@
 <div id="print-section">
-	<div class="row">
-	  <div class="column">
-	  <!-- <table>
-	  	<tr *ngFor="let item of createRange((noofItems));">
-	  		<td>Ref.No:</td><td>{{getRandomNumber() | uppercase}}{{code}}_{{getRandomNumber() | uppercase}}{{sp}}{{getRandomNumber() | uppercase}}</td>
-	  	</tr>
-	  </table> -->
-	   <ul class="barcode-list">
-	      <li class="barcode-item" *ngFor="let item of createRange((noofItems));">
-	          {{getRandomNumber() | uppercase}}{{code}}_{{getRandomNumber() | uppercase}}{{sp}}{{getRandomNumber() | uppercase}}
-	         
-	      </li>
-	   </ul>
-
-	  </div>
-	  <div class="column">
-	     <ul class="barcode-list">
-	   	      <li class="barcode-item" *ngFor="let item of createRange((noofItems));">
-	   	          {{getRandomNumber() | uppercase}}{{code}}_{{getRandomNumber() | uppercase}}{{sp}}{{getRandomNumber() | uppercase}}
-	   	         
-	   	      </li>
-	   	   </ul>
-	  </div>
-	</div>
-
-	
+	<table>
+	      	<tr *ngFor="let item of createRange((noofItems));">
+	      		<td>
+	      			<ngx-barcode bc-value="{{code}}" bc-width="2" bc-heigth="80"></ngx-barcode>
+	      			{{getRandomNumber() | uppercase}}{{code}}_{{getRandomNumber() | uppercase}}{{sp}}{{getRandomNumber() | uppercase}}
+	      		</td>
+	      	</tr>
+	      </table>
 </div>
+ 
 <div class="button-section">
-		<button  styleSheetFile="barcode.component.css" printSectionId="print-section" ngxPrint useExistingCss="true" mat-raised-button  color="primary" class="print">Print</button>
+		<button  printSectionId="print-section" ngxPrint  mat-raised-button  color="primary">Print</button>
 		<button  mat-raised-button  color="warn" (click)="goBack()" >Back</button>
 </div>
 

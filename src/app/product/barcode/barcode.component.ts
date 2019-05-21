@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute,Router  } from "@angular/router";
 import {RestApiService} from '../../service/rest-api.service';
+import {Location} from '@angular/common';
 @Component({
   selector: 'app-barcode',
   templateUrl: './barcode.component.html',
@@ -13,7 +14,7 @@ export class BarcodeComponent implements OnInit {
   noofItems: Number;
   noofItemsLeft: Number;
   /*:code/:sp/:noofitems/:noofitemsleft*/
-  constructor(private activatedRoute:ActivatedRoute,private router:Router,private restApiService: RestApiService){
+  constructor(private activatedRoute:ActivatedRoute,private router:Router,private restApiService: RestApiService,private location: Location){
 
   }
 
@@ -38,5 +39,8 @@ export class BarcodeComponent implements OnInit {
       result += characters.charAt(Math.floor(Math.random() * charactersLength));
     }
     return result;
+  }
+  goBack(){
+    this.location.back();
   }
 }

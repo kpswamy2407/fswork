@@ -23,29 +23,17 @@
 	padding: 5px;
 	margin:10px;
 	border: 1px solid grey;
+  width: 50%;
 }
 .button-section button{
   margin: 10px;
 }
 @media print {
-         
-         
-#print-section .column {
-  float: left !important;
-  width: 50%  !important; 
-  padding: 10px !important;
-}
 
-/* Clear floats after the columns */
-#print-section .row:after {
-  content: ""  !important;
-  display: table  !important;
-  clear: both  !important;
- }
-#print-section .barcode-list{
+.barcode-list{
 	list-style: none  !important;
 }
-#print-section .barcode-item{
+.barcode-item{
 	padding: 5px  !important;
 	margin:10px  !important;
 	width: 35px !important;
