@@ -24,7 +24,9 @@ export class DashboardComponent implements OnInit {
         this.getRecentSale();
     }
 
-    ngOnInit() {}
+    ngOnInit() {
+        this.showSpinner=true;
+    }
     getDashboard(){
         this.showSpinner=true;
         this.isLoaded=false;
