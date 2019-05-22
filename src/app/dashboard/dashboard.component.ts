@@ -10,35 +10,41 @@ import {Sale} from '../sale/sale';
 })
 export class DashboardComponent implements OnInit {
     sales: Sale[];
-
+    showSpinner: Boolean;
+    isLoaded: Boolean;
     displayedColumns=['id','customer','totalAmount','createdAt','action'];
     dataSource = new MatTableDataSource(this.sales);
     places: Array<any> = [];
     records: any;
-    applyFilter(filterValue: string) {
-        filterValue = filterValue.trim(); // Remove whitespace
-        filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
-        this.dataSource.filter = filterValue;
-    }
-
+    
     constructor(private restApiService: RestApiService) {
+        this.showSpinner=true;
+        this.isLoaded=false;
         this.getDashboard();
         this.getRecentSale();
     }
 
     ngOnInit() {}
     getDashboard(){
+        this.showSpinner=true;
+        this.isLoaded=false;
         this.restApiService.getAll('users/dashboard').subscribe(result=>{
              if(result.status=200){
                 this.records=result.records;
+                this.showSpinner=false;
+                this.isLoaded=true;
             }
         })
     }
      getRecentSale(){
+        this.showSpinner=true;
+        this.isLoaded=false;
         this.restApiService.getAll('sale/recent').subscribe(result=>{
             if(result.status=200){
                 this.sales=result.sales;
                 this.dataSource.data=this.sales;
+                this.showSpinner=false;
+                this.isLoaded=true;
             }
         })
     }

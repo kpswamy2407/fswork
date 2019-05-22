@@ -33,12 +33,11 @@ export class LoginComponent implements OnInit {
     		this.showSpinner=true;
         	this.restApiService.postData('users/login',this.logiForm.value).subscribe(result=>{
                 if(result.status==200){
-                    this.authService.login(result.user,result.token).subscribe(() => {
-                          if (this.authService.isLoggedIn) {
+                    this.authService.login(result.user,result.token);
+                     if (this.authService.isLoggedIn) {
                             let redirect = this.authService.redirectUrl ? this.router.parseUrl(this.authService.redirectUrl) : '/dashboard';
                             this.router.navigateByUrl(redirect);
-                        }
-                    });
+                    }
                     
                 }
                 else{

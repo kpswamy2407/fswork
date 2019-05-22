@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { MatButtonModule, MatCardModule, MatIconModule, MatTableModule } from '@angular/material';
+import { MatButtonModule, MatCardModule, MatIconModule, MatTableModule,MatProgressBarModule,
+  MatProgressSpinnerModule } from '@angular/material';
 import { MatGridListModule } from '@angular/material/grid-list';
 
 import { DashboardRoutingModule } from './dashboard-routing.module';
@@ -17,6 +18,8 @@ import { DashboardComponent } from './dashboard.component';
     MatCardModule,
     MatIconModule,
     MatButtonModule,
+    MatProgressBarModule,
+  MatProgressSpinnerModule,
   ]
 })
 export class DashboardModule { }

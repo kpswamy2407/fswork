@@ -1,24 +1,24 @@
 <div id="sidebar">
   <mat-nav-list>
-      <a mat-list-item [routerLinkActive]="'active'" [routerLink]="['/dashboard']">
+      <a mat-list-item [routerLinkActive]="'active'" *ngIf="isAdmin" [routerLink]="['/dashboard']">
           <mat-icon class="sidenav-icon">dashboard</mat-icon> {{ 'Dashboard' }}
       </a>
-      <a mat-list-item [routerLinkActive]="'active'" [routerLink]="['/product']">
+      <a mat-list-item [routerLinkActive]="'active'" *ngIf="isAdmin" [routerLink]="['/product']">
           <mat-icon class="sidenav-icon">bar_chart</mat-icon> {{ 'Products' }}
       </a>
       <a mat-list-item [routerLinkActive]="'active'" [routerLink]="['/sale']">
           <mat-icon class="sidenav-icon">shopping_cart</mat-icon> {{ 'Sales' }}
       </a>
-      <a mat-list-item [routerLinkActive]="'active'" [routerLink]="['/brand']">
+      <a mat-list-item [routerLinkActive]="'active'" *ngIf="isAdmin" [routerLink]="['/brand']">
           <mat-icon class="sidenav-icon">input</mat-icon> {{ 'Brands' }}
       </a>
-      <a mat-list-item [routerLinkActive]="'active'" [routerLink]="['/category']">
+      <a mat-list-item [routerLinkActive]="'active'" *ngIf="isAdmin" [routerLink]="['/category']">
           <mat-icon class="sidenav-icon">category</mat-icon> {{ 'Categories' }}
       </a>
-      <a mat-list-item [routerLinkActive]="'active'" [routerLink]="['/size']">
+      <a mat-list-item [routerLinkActive]="'active'" *ngIf="isAdmin" [routerLink]="['/size']">
           <mat-icon class="sidenav-icon">format_size</mat-icon> {{ 'Sizes' }}
       </a>
-      <a mat-list-item [routerLinkActive]="'active'" [routerLink]="['/supplier']">
+      <a mat-list-item [routerLinkActive]="'active'" *ngIf="isAdmin" [routerLink]="['/supplier']">
           <mat-icon class="sidenav-icon">insert_drive_file</mat-icon> {{ 'Suppliers' }}
       </a>
       <!-- <div class="nested-menu">

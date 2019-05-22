@@ -11,6 +11,7 @@ export class AuthService {
   isLoggedIn = false;
   token='';
   user: any;
+  userType: Number;
   // store the URL so we can redirect after logging in
   redirectUrl: string;
 
@@ -19,12 +20,14 @@ export class AuthService {
         this.user=loginUser;
         this.token=userToken;
         this.isLoggedIn=true;
+        this.userType=loginUser.userType;
         return loginUser;
       }
       else{
         this.user=null;
         this.token='';
         this.isLoggedIn=false;
+        this.userType=0;
         return null;
       }
   }

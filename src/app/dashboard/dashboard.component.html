@@ -1,4 +1,6 @@
-<div class="mb-20" fxLayout="row" fxLayout.lt-md="column" fxFlex fxLayoutGap="20px">
+<div [style.display]="isLoaded ? 'block' : 'none'">
+    <mat-spinner [style.display]="showSpinner ? 'block' : 'none'"></mat-spinner>
+    <div class="mb-20" fxLayout="row" fxLayout.lt-md="column" fxFlex fxLayoutGap="20px">
     <div fxFlex>
        <mat-card class="info">
             <mat-card-header>
@@ -128,3 +130,6 @@
 
 
 
+
+
+</div>

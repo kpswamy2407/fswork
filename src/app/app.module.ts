@@ -10,12 +10,13 @@ import {HttpClientModule} from '@angular/common/http';
 
 import { MaterialModule } from './includes/material/material.module';
 import { MatConfirmDialogComponent } from './mat-confirm-dialog/mat-confirm-dialog.component';
-
+import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MatConfirmDialogComponent
+    MatConfirmDialogComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
