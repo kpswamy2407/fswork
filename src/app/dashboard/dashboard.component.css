@@ -31,7 +31,7 @@ table {
 	 width: 100%;
 }
  .mat-card .mat-card-title {
-	 font-size: 50px !important;
+	 font-size: 20px !important;
 	 text-align: center;
 }
  .mat-card .mat-card-subtitle {
@@ -49,14 +49,20 @@ table {
 
 }
  .danger {
-	 background: linear-gradient(60deg, #ec407a, #d81b60);
+	 background: linear-gradient(60deg, #ec407a, #63ca70);
 }
  .warn {
-	 background: linear-gradient(60deg, #ffa726, #fb8c00);
+	 background: linear-gradient(60deg, #ffa726, #fb00d199);
 }
  .success {
-	 background: linear-gradient(60deg, #66bb6a, #43a047);
+	 background: linear-gradient(60deg, #66bb6a, #0d37e4);
 }
  .info {
-	 background: linear-gradient(60deg, #26c6da, #00acc1);
+	 background: linear-gradient(60deg, #26c6da, #c13e00);
+}
+ .brand {
+	 background: linear-gradient(60deg, #2345af, #e2345e);
+}
+ .product {
+	 background: linear-gradient(60deg, #ec3107, #e6fb76bf);
 }
