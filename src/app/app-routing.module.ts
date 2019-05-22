@@ -5,6 +5,7 @@ import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
 const routes: Routes = [
   {
     path: '',
+    canActivate:[AuthGuard],
     loadChildren: './layout/layout.module#LayoutModule'
 
   },

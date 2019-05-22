@@ -20,6 +20,10 @@ export class LoginComponent implements OnInit {
     showSpinner: Boolean;
    
     constructor(private router: Router,private restApiService: RestApiService, private fb: FormBuilder, private authService: AuthService) {
+         if (this.authService.isLoggedIn) {
+                            let redirect = this.authService.redirectUrl ? this.router.parseUrl(this.authService.redirectUrl) : '/dashboard';
+                            this.router.navigateByUrl(redirect);
+                    }
         this.logiForm=this.fb.group({
     		'username':[null,Validators.required],
     		'password':[null,Validators.required]

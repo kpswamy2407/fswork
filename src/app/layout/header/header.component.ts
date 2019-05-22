@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
+import {AuthService} from '../../service/auth.service';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -9,7 +10,7 @@ export class HeaderComponent implements OnInit {
 
   public pushRightClass: string;
 
-  constructor(public router: Router) {
+  constructor(public router: Router,private authService: AuthService) {
       this.router.events.subscribe(val => {
           if (val instanceof NavigationEnd && window.innerWidth <= 992 && this.isToggled()) {
               this.toggleSidebar();
@@ -32,8 +33,8 @@ export class HeaderComponent implements OnInit {
   }
 
   onLoggedout() {
-      localStorage.removeItem('isLoggedin');
-      this.router.navigate(['/login']);
+     this.authService.logout();
+     this.router.navigate(['/login']);
   }
 
   
