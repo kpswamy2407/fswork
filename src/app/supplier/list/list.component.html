@@ -33,7 +33,7 @@
       <!-- Color Column -->
       <ng-container matColumnDef="isActive">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
-          <td mat-cell *matCellDef="let row"> {{row.isActive}} </td>
+          <td mat-cell *matCellDef="let row"> {{(row.isActive==true?'Active':'Inactive')}} </td>
       </ng-container>
       <ng-container matColumnDef="action">
               <th mat-header-cell *matHeaderCellDef> Action </th>   
