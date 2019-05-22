@@ -93,7 +93,37 @@
     
 </div>
 
+<div class="mb-20" flFlex flexLayout="row" flexLayout.lt-md="column">
+    <div fxFlex>
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+            <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Sale Reference Number </th>
+            <td mat-cell *matCellDef="let row"> {{row.id}} </td>
+        </ng-container>
+        <ng-container matColumnDef="customer">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Customer </th>
+            <td mat-cell *matCellDef="let row"> {{row.customer.name}}-{{row.customer.mobile}} </td>
+        </ng-container>
+        <ng-container matColumnDef="totalAmount">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Amount</th>
+            <td mat-cell *matCellDef="let row"> {{row.totalAmount | currency:"&#8377;"}} </td>
+        </ng-container>
+        <ng-container matColumnDef="createdAt">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Date Of Sale</th>
+            <td mat-cell *matCellDef="let row"> {{row.createdAt | date:'medium' }} </td>
+        </ng-container>
+        <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef> Action </th>   
+            <td mat-cell *matCellDef="let element" class="action-class"> 
+                <a mat-icon-button color="primary" class="float-right delete-class" [routerLink]="['/sale/view',element.id]" matTooltip="View the sales details"><mat-icon>info</mat-icon></a> 
 
+            </td>
+        </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+    </div>
+</div>
 
 
 
