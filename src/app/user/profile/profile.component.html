@@ -1,3 +1,18 @@
-<p>
-  profile works!
-</p>
+<div class="mat-elevation-z8">
+	
+	<div>
+		<div class="customer">
+		<h4>User Details</h4>
+			<table>
+				<tr><td>Username</td><td>:</td><td>{{user.username}}</td></tr>
+				<tr><td>Email</td><td>:</td><td>{{user.email}}</td></tr>
+				<tr><td>User Type</td><td>:</td><td>{{(user.userType==1)?'Admin':'Regular User'}}</td></tr>
+			</table>
+	</div>
+	
+
+	</div>
+	<div class="button-section">
+		<button  mat-raised-button  color="warn" (click)="goBack()" >Back</button>
+	</div>
+</div>
