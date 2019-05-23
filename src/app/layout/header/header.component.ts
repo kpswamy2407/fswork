@@ -37,7 +37,7 @@ export class HeaderComponent implements OnInit {
      this.router.navigate(['/login']);
   }
   getProfile(){
-    this.router.navigate(['user']);
+    this.router.navigate(['/user']);
   }
   changePassword(){
     this.router.navigate(['/user/setting']);

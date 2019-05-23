@@ -10,6 +10,8 @@ import { SettingComponent } from './setting/setting.component';
   imports: [
     CommonModule,
     UserRoutingModule
+  ],
+  exports:[
   ]
 })
 export class UserModule { }

@@ -21,11 +21,9 @@ export class LoginComponent implements OnInit {
    
     constructor(private router: Router,private restApiService: RestApiService, private fb: FormBuilder, private authService: AuthService) {
          if (this.authService.isLoggedIn) {
-                            if(this.authService.userType==1){
-                                let redirect = this.authService.redirectUrl ? this.router.parseUrl(this.authService.redirectUrl) : '/dashboard';   
-                            }
-                            else{
-                                let redirect='/sale';
+                            let redirect = this.authService.redirectUrl ? this.router.parseUrl(this.authService.redirectUrl) : '/dashboard';   
+                            if(this.authService.userType==2){
+                                 redirect='/sale';
                             }
                             this.router.navigateByUrl(redirect);
                     }
@@ -45,12 +43,11 @@ export class LoginComponent implements OnInit {
                 if(result.status==200){
                     this.authService.login(result.user,result.token);
                      if (this.authService.isLoggedIn) {
-                            if(this.authService.userType==1){
-                                let redirect = this.authService.redirectUrl ? this.router.parseUrl(this.authService.redirectUrl) : '/dashboard';   
+                            let redirect = this.authService.redirectUrl ? this.router.parseUrl(this.authService.redirectUrl) : '/dashboard';   
+                            if(this.authService.userType==2){
+                                 redirect='/sale';
                             }
-                            else{
-                                let redirect='/sale';
-                            }
+                            
                             this.router.navigateByUrl(redirect);
                     }
                     
