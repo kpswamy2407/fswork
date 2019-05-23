@@ -21,7 +21,12 @@ export class LoginComponent implements OnInit {
    
     constructor(private router: Router,private restApiService: RestApiService, private fb: FormBuilder, private authService: AuthService) {
          if (this.authService.isLoggedIn) {
-                            let redirect = this.authService.redirectUrl ? this.router.parseUrl(this.authService.redirectUrl) : '/dashboard';
+                            if(this.authService.userType==1){
+                                let redirect = this.authService.redirectUrl ? this.router.parseUrl(this.authService.redirectUrl) : '/dashboard';   
+                            }
+                            else{
+                                let redirect='/sale';
+                            }
                             this.router.navigateByUrl(redirect);
                     }
         this.logiForm=this.fb.group({
@@ -35,11 +40,17 @@ export class LoginComponent implements OnInit {
     onLogin() {
     	if(this.logiForm.valid){
     		this.showSpinner=true;
+            this.hasError=false;
         	this.restApiService.postData('users/login',this.logiForm.value).subscribe(result=>{
                 if(result.status==200){
                     this.authService.login(result.user,result.token);
                      if (this.authService.isLoggedIn) {
-                            let redirect = this.authService.redirectUrl ? this.router.parseUrl(this.authService.redirectUrl) : '/dashboard';
+                            if(this.authService.userType==1){
+                                let redirect = this.authService.redirectUrl ? this.router.parseUrl(this.authService.redirectUrl) : '/dashboard';   
+                            }
+                            else{
+                                let redirect='/sale';
+                            }
                             this.router.navigateByUrl(redirect);
                     }
                     
@@ -47,6 +58,7 @@ export class LoginComponent implements OnInit {
                 else{
                     this.errorMessage=result.error;
                     this.showSpinner=false;
+                    this.hasError=true;
                 }
             })
             

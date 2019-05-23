@@ -1,7 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-
-const routes: Routes = [];
+import { ProfileComponent } from './profile/profile.component';
+import { SettingComponent } from './setting/setting.component';
+const routes: Routes = [
+	{path:'',component:ProfileComponent},
+	{path:'setting',component:SettingComponent}
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

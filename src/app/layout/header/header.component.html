@@ -13,15 +13,11 @@
       <mat-icon>account_circle</mat-icon>
   </button>
   <mat-menu #profile="matMenu">
-      <button mat-menu-item>
+      <button mat-menu-item (click)="getProfile()">
           <mat-icon>person</mat-icon>
           <span>{{ 'Profile'  }}</span>
       </button>
-      <button mat-menu-item>
-          <mat-icon>inbox</mat-icon>
-          <span>{{ 'Inbox'  }}</span>
-      </button>
-      <button mat-menu-item>
+      <button mat-menu-item (click)="changePassword()">
           <mat-icon>settings</mat-icon>
           <span>{{ 'Settings'  }}</span>
       </button>

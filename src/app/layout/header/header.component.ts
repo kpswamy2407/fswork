@@ -36,7 +36,10 @@ export class HeaderComponent implements OnInit {
      this.authService.logout();
      this.router.navigate(['/login']);
   }
-
-  
-
+  getProfile(){
+    this.router.navigate(['user']);
+  }
+  changePassword(){
+    this.router.navigate(['/user/setting']);
+  }
 }
