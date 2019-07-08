@@ -8,6 +8,7 @@ export class Product {
 	sizeId: number;
 	buyingPrice: number;
 	sellingPrice: number;
+	mrp: number;
 	noOfItems: number;
 	noOfItemsLeft: number;
 	createdAt:Date

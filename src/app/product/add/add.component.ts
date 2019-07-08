@@ -37,6 +37,7 @@ export class AddComponent implements OnInit {
       'brandId':[null,Validators.required],
       'buyingPrice':[null,Validators.required],
       'sellingPrice':[null,Validators.required],
+      'mrp':[null,Validators.required],
       'noOfItems':[null,Validators.required]
     });
   }

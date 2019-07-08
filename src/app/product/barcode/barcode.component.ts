@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute,Router  } from "@angular/router";
 import {RestApiService} from '../../service/rest-api.service';
 import {Location} from '@angular/common';
+import { Product} from '../product';
 @Component({
   selector: 'app-barcode',
   templateUrl: './barcode.component.html',
@@ -13,6 +14,7 @@ export class BarcodeComponent implements OnInit {
   sp: Number;
   noofItems: Number;
   noofItemsLeft: Number;
+  product:Product;
   /*:code/:sp/:noofitems/:noofitemsleft*/
   constructor(private activatedRoute:ActivatedRoute,private router:Router,private restApiService: RestApiService,private location: Location){
 
@@ -23,6 +25,15 @@ export class BarcodeComponent implements OnInit {
   	this.sp=this.activatedRoute.snapshot.params['sp'];
   	this.noofItems=this.activatedRoute.snapshot.params['noofitems'];
   	this.noofItemsLeft=this.activatedRoute.snapshot.params['noofitemsleft'];
+    this.getProduct(this.code);
+  }
+  getProduct(code){
+    const url=`product/getbycode/${code}`;
+    this.restApiService.getAll(url).subscribe(result=>{
+      if(result.status==200){
+        this.product=result.product;
+      }
+    })
   }
   createRange(number){
     var items: number[] = [];

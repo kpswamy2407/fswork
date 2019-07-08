@@ -2,9 +2,14 @@
 	<table>
 	      	<tr *ngFor="let item of createRange((noofItems));">
 	      		<td>
+	      			<b>Brand		:	{{product.brand.name}}</b><br>
+	      			<b>Category		:	{{product.category.name}}</b><br>
+	      			<b>Size			:	{{product.size.name}}</b><br>
+	      			<b>M.R.P		:	{{product.mrp | currency:"&#8377;"}}</b><br>
 	      			<ngx-barcode bc-value="{{code}}" bc-width="2" bc-heigth="80"></ngx-barcode>
 	      			{{getRandomNumber() | uppercase}}{{code}}_{{getRandomNumber() | uppercase}}{{sp}}{{getRandomNumber() | uppercase}}
 	      		</td>
+	      		<td><br></td>
 	      	</tr>
 	      </table>
 </div>

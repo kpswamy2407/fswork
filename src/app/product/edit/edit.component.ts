@@ -44,6 +44,7 @@ export class EditComponent implements OnInit {
 		    'brandId':[null,Validators.required],
 		    'buyingPrice':[null,Validators.required],
 		    'sellingPrice':[null,Validators.required],
+		    'mrp':[null,Validators.required],
 		    'noOfItems':[null,Validators.required]
 		  });
 
@@ -101,6 +102,7 @@ export class EditComponent implements OnInit {
 		    		'brandId':this.product.brandId,
 		    		'buyingPrice':this.product.buyingPrice,
 		    		'sellingPrice':this.product.sellingPrice,
+		    		'mrp':this.product.mrp,
 		    		'noOfItems':this.product.noOfItems
 				})
 			}
