@@ -14,8 +14,8 @@ export class ListComponent implements OnInit {
   sortedData:Product[];
   displayedColumns=['code','name','supplier','size','category','brand','buyingPrice','sellingPrice','mrp','noOfItems','noOfItemsSold','action'];
   dataSource = new MatTableDataSource(this.products);
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-  @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatPaginator,{static: false}) paginator: MatPaginator;
+  @ViewChild(MatSort,{static: false}) sort: MatSort;
   constructor(private restApiService:RestApiService,private dialogService:DialogService,private dialog: MatDialog,private router: Router) {
     this.getAll();
     
